@@ -18,5 +18,6 @@ position = Vector2(137, -150)
 
 [node name="Enemies" type="Node" parent="." unique_id=105181249]
 
-[node name="Snail" parent="Enemies" unique_id=1263706926 instance=ExtResource("4_3lxj6")]
-position = Vector2(287, -146)
+[node name="Snail" parent="Enemies" unique_id=1263706926 node_paths=PackedStringArray("_hitBox") instance=ExtResource("4_3lxj6")]
+position = Vector2(505, -161)
+_hitBox = NodePath("HitBox")
