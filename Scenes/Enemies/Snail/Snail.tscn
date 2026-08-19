@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b6roef2kq5qc4"]
+
+[ext_resource type="PackedScene" uid="uid://bmoalljm1tvbg" path="res://Scenes/Enemies/EnemyBase.tscn" id="1_h5qp1"]
+[ext_resource type="Script" uid="uid://0x335lict2sa" path="res://Scenes/Enemies/Snail/Snail.cs" id="2_tgnkg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tgnkg"]
+
+[node name="Snail" unique_id=1263706926 instance=ExtResource("1_h5qp1")]
+script = ExtResource("2_tgnkg")
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=1577273913]
+animation = &"snail"
+autoplay = "snail"
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=2062512844]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_tgnkg")

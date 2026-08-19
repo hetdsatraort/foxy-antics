@@ -38,7 +38,6 @@ public partial class Player : CharacterBody2D
 		velocity.Y = Mathf.Clamp(velocity.Y, JUMP_SPEED, MAX_FALL);
 		Velocity = velocity;
 
-		_debugLabel.Text = velocity.Y.ToString("F2");
 		MoveAndSlide();
 
 	}

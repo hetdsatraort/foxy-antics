@@ -210,7 +210,6 @@ hframes = 19
 frame = 13
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=717189287]
-visible = false
 position = Vector2(0, 5)
 shape = SubResource("CapsuleShape2D_ql73s")
 
