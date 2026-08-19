@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://m54n8xdlyydl"]
+
+[ext_resource type="Script" uid="uid://bo225fhu24881" path="res://Scenes/Main/Main.cs" id="1_p8rbg"]
+[ext_resource type="Texture2D" uid="uid://dejjaglnvggxb" path="res://Assets/backgrounds/game_background_3/game_background_3. 2.png" id="2_qtv3y"]
+[ext_resource type="AudioStream" uid="uid://dupy8gp2xyhl4" path="res://Assets/sound/Farm Frolics.ogg" id="3_i3fi7"]
+[ext_resource type="LabelSettings" uid="uid://cs563xqk74by0" path="res://Resources/TrippyColors96.tres" id="4_i3fi7"]
+
+[node name="Main" type="Control" unique_id=514625084]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p8rbg")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=211687437]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qtv3y")
+expand_mode = 1
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1979585494]
+stream = ExtResource("3_i3fi7")
+volume_db = -6.0
+autoplay = true
+parameters/looping = true
+
+[node name="Label" type="Label" parent="." unique_id=2085960674]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -11.5
+offset_right = 44.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Foxy Antics"
+label_settings = ExtResource("4_i3fi7")
+horizontal_alignment = 1
+vertical_alignment = 1
