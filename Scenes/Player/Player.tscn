@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c4hfer4hxk4j"]
 
+[ext_resource type="Script" uid="uid://bvik0rxvsxu6v" path="res://Scenes/Player/Player.cs" id="1_h54ih"]
 [ext_resource type="Texture2D" uid="uid://ix048ftxavv3" path="res://Assets/player/player.png" id="1_s0eop"]
 [ext_resource type="PackedScene" uid="uid://nkn7ueh7e5dp" path="res://Scenes/PlayerCam/PlayerCam.tscn" id="2_ft8w5"]
 
@@ -9,6 +10,7 @@ height = 16.0
 
 [node name="Player" type="CharacterBody2D" unique_id=326797843]
 collision_layer = 0
+script = ExtResource("1_h54ih")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1253005433]
 texture = ExtResource("1_s0eop")
