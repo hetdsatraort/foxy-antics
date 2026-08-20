@@ -17,6 +17,10 @@ public partial class Player : CharacterBody2D
 	public override void _Ready()
 	{
 	}
+	public override void _EnterTree()
+	{
+		AddToGroup("Player"); //GameConstants.GROUP_PLAYER; --> 
+	}
 	public override void _UnhandledInput(InputEvent @event)
 	{
 		if(@event.IsActionPressed("jump"))
@@ -37,6 +41,8 @@ public partial class Player : CharacterBody2D
 
 		velocity.Y = Mathf.Clamp(velocity.Y, JUMP_SPEED, MAX_FALL);
 		Velocity = velocity;
+
+		_debugLabel.Text = $"Position: {GlobalPosition.X}, {GlobalPosition.Y}, Velocity: {Velocity.X}, {Velocity.Y}";
 
 		MoveAndSlide();
 

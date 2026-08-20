@@ -3,6 +3,7 @@ using System;
 
 public partial class Snail : EnemyBase
 {
+	[Export] private RayCast2D _floorDetect;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -11,12 +12,24 @@ public partial class Snail : EnemyBase
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _PhysicsProcess(double delta)
 	{
-		Vector2 velocity = Velocity;
-		velocity.Y += _gravity * (float)delta;
-		Velocity = velocity;
-		GD.Print(velocity.Y.ToString("F2"));
-
+		Vector2 velocity = ApplyGravity(delta);
+		if(IsOnFloor())
+		{
+			velocity.X = _animatedSprite2D.FlipH ? _speed : -_speed;
+		}
 		MoveAndSlide();
+		FlipMe();
+	}
 
+	protected override void FlipMe()
+	{
+		if (!_floorDetect.IsColliding() || IsOnWall())
+		{
+			_animatedSprite2D.FlipH = !_animatedSprite2D.FlipH;
+			_floorDetect.Position = new Vector2(
+				_floorDetect.Position.X * -1,
+				_floorDetect.Position.Y
+			);
+		}
 	}
 }

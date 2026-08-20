@@ -105,7 +105,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uhgc7")
 }],
-"loop": true,
+"loop": 1,
 "name": &"eagle",
 "speed": 14.0
 }, {
@@ -125,7 +125,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5jwg1")
 }],
-"loop": true,
+"loop": 1,
 "name": &"frog_idle",
 "speed": 5.0
 }, {
@@ -136,7 +136,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bo7sv")
 }],
-"loop": false,
+"loop": 0,
 "name": &"frog_jumping",
 "speed": 5.0
 }, {
@@ -171,19 +171,21 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ouk02")
 }],
-"loop": true,
+"loop": 1,
 "name": &"snail",
 "speed": 14.0
 }]
 
-[node name="EnemyBase" type="CharacterBody2D" unique_id=1263706926 node_paths=PackedStringArray("_screenNotifier", "_animatedSprite2D", "_hitBox")]
+[node name="EnemyBase" type="CharacterBody2D" unique_id=1263706926 node_paths=PackedStringArray("_screenNotifier", "_animatedSprite2D", "_hitBox", "_movementTimer")]
 collision_layer = 0
 script = ExtResource("1_m1s7c")
 _screenNotifier = NodePath("VisibleOnScreenNotifier2D")
 _animatedSprite2D = NodePath("AnimatedSprite2D")
-_hitBox = NodePath("")
+_hitBox = NodePath("HitBox")
+_movementTimer = NodePath("Timer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1577273913]
+scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_f51v7")
 animation = &"eagle"
 
@@ -192,3 +194,8 @@ animation = &"eagle"
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=653617655]
 
 [node name="HitBox" parent="." unique_id=272649906 instance=ExtResource("4_2a3kf")]
+collision_layer = 2
+collision_mask = 16
+
+[node name="Timer" type="Timer" parent="." unique_id=129597078]
+wait_time = 3.0
