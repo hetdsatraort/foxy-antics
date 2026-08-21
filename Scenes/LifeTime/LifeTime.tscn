@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bxoetrrfb1g86"]
+
+[ext_resource type="Script" uid="uid://je66gurfgeeb" path="res://Scenes/LifeTime/LifeTime.cs" id="1_vmrl7"]
+
+[node name="LifeTime" type="Node" unique_id=1486877325 node_paths=PackedStringArray("_Timer")]
+script = ExtResource("1_vmrl7")
+_Timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="." unique_id=2066055617]
+one_shot = true

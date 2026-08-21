@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b4jsdaflfvvec"]
+
+[ext_resource type="PackedScene" uid="uid://denxhf7tjddle" path="res://Scenes/BulletBase/BulletBase.tscn" id="1_83qyy"]
+[ext_resource type="Texture2D" uid="uid://dah7l62m0rirg" path="res://Assets/items/bullet2.png" id="2_145ue"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fpsj7"]
+radius = 3.0
+
+[node name="EnemyBullet" unique_id=556887668 instance=ExtResource("1_83qyy")]
+collision_layer = 10
+collision_mask = 21
+
+[node name="Sprite2D" parent="." index="0" unique_id=350689824]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_145ue")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1174696709]
+shape = SubResource("CircleShape2D_fpsj7")

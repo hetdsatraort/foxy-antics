@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://denxhf7tjddle"]
+
+[ext_resource type="Script" uid="uid://c085fwmvf5g1a" path="res://Scenes/BulletBase/BulletBase.cs" id="1_pi2vc"]
+[ext_resource type="PackedScene" uid="uid://bxoetrrfb1g86" path="res://Scenes/LifeTime/LifeTime.tscn" id="2_0etr7"]
+
+[node name="BulletBase" type="Area2D" unique_id=556887668]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_pi2vc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=350689824]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1174696709]
+
+[node name="LifeTime" parent="." unique_id=1486877325 instance=ExtResource("2_0etr7")]

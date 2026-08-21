@@ -14,6 +14,8 @@ public partial class Player : CharacterBody2D
 	[Export] private Label _debugLabel;
 	[Export] private AudioStreamPlayer2D _jumpSound;
 	[Export] private Sprite2D _playerSprite;
+	// private PackedScene _bulletScene = GD.Load<PackedScene>("res://Scenes/BulletBase/PlayerBullet.tscn");
+
 	public override void _Ready()
 	{
 	}
@@ -29,6 +31,13 @@ public partial class Player : CharacterBody2D
 
 			_jumped = true;
 		}
+		// if(@event.IsActionPressed("test"))
+		// {
+		// 	BulletBase pb = _bulletScene.Instantiate<BulletBase>();
+		// 	var direction = _playerSprite.FlipH ? Vector2.Left : Vector2.Right;
+		// 	pb.Setup(direction, 300.0f);
+		// 	CallDeferred(MethodName.AddChild, pb);
+		// }
 
 	}
 

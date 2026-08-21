@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b6roef2kq5qc4" path="res://Scenes/Enemies/Snail/Snail.tscn" id="4_3lxj6"]
 [ext_resource type="PackedScene" uid="uid://cx45uj01hja50" path="res://Scenes/Enemies/Frog.tscn" id="5_lmtt4"]
 [ext_resource type="PackedScene" uid="uid://cstk25s3h4be8" path="res://Scenes/Enemies/Eagle.tscn" id="6_ooqsx"]
+[ext_resource type="PackedScene" uid="uid://devta8henbrea" path="res://Scenes/BulletBase/PlayerBullet.tscn" id="7_txgif"]
 
 [node name="LevelBase" type="Node" unique_id=336341704]
 script = ExtResource("1_5ufo3")
@@ -22,9 +23,14 @@ position = Vector2(137, -150)
 
 [node name="Snail" parent="Enemies" unique_id=1263706926 instance=ExtResource("4_3lxj6")]
 position = Vector2(458, -64)
+_fallenOffY = 30.0
 
 [node name="Frog" parent="Enemies" unique_id=569646411 instance=ExtResource("5_lmtt4")]
 position = Vector2(240, -165)
+_fallenOffY = 30.0
 
 [node name="Eagle" parent="Enemies" unique_id=1919931852 instance=ExtResource("6_ooqsx")]
 position = Vector2(381, -214)
+
+[node name="PlayerBullet" parent="Enemies" unique_id=556887668 instance=ExtResource("7_txgif")]
+position = Vector2(-211, -70)

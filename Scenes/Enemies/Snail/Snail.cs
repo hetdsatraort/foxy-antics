@@ -17,6 +17,7 @@ public partial class Snail : EnemyBase
 		{
 			velocity.X = _animatedSprite2D.FlipH ? _speed : -_speed;
 		}
+		Velocity = velocity;
 		MoveAndSlide();
 		FlipMe();
 	}
