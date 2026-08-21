@@ -20,9 +20,9 @@ public partial class BulletBase : Area2D
 		Position += _direction * (float)delta;
 	}
 
-	public void Setup(Vector2 dir, float speed)
+	public void Setup(Vector2 pos, Vector2 dir, float speed)
 	{
-		Position = new Vector2(0, 8);
+		Position = pos;
 		_direction = dir * speed;
 	}
 }

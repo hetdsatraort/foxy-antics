@@ -4,6 +4,7 @@ using System;
 public partial class SignalHub : Node
 {
 	public static SignalHub Instance { get; set; }
+	[Signal] public delegate void OnCreateBulletEventHandler(Vector2 pos, Vector2 dir, float speed, PackedScene scene);
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -13,5 +14,10 @@ public partial class SignalHub : Node
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+	}
+
+	public static void EmitOnCreateBullet(Vector2 pos, Vector2 dir, float speed, PackedScene scene)
+	{
+		Instance.EmitSignal(SignalName.OnCreateBullet, pos, dir, speed, scene);
 	}
 }
