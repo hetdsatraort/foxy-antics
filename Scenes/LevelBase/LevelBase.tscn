@@ -19,6 +19,7 @@ tile_set = ExtResource("2_78m1b")
 
 [node name="Player" parent="." unique_id=326797843 instance=ExtResource("3_78m1b")]
 position = Vector2(137, -150)
+_lives = 20
 
 [node name="Enemies" type="Node" parent="." unique_id=105181249]
 

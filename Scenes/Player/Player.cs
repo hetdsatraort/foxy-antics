@@ -15,35 +15,49 @@ public partial class Player : CharacterBody2D
 	[Export] private AudioStreamPlayer2D _jumpSound;
 	[Export] private Sprite2D _playerSprite;
 	[Export] private Shooter _shooter;
+	[Export] protected HitBox _hitBox;
+	[Export] private int _lives = 3;
 	private PackedScene _bulletScene = GD.Load<PackedScene>("res://Scenes/BulletBase/PlayerBullet.tscn");
 
 	public override void _Ready()
 	{
+		_hitBox.AreaEntered += OnHBAreaEntered;
 	}
-	public override void _EnterTree()
+
+    private void OnHBAreaEntered(Area2D area)
+	{
+		// SignalHub.EmitOnCreateExplosion(GlobalPosition);
+		_lives--;
+		if (_lives == 0)
+		{
+			QueueFree();
+		}
+	}
+
+    public override void _EnterTree()
 	{
 		AddToGroup("Player"); //GameConstants.GROUP_PLAYER; --> 
 	}
 	public override void _UnhandledInput(InputEvent @event)
 	{
-		if(@event.IsActionPressed("jump"))
+		if (@event.IsActionPressed("jump"))
 		{
-			if(_jumped) return;
+			if (_jumped) return;
 
 			_jumped = true;
 		}
-		if(@event.IsActionPressed("shoot"))
+		if (@event.IsActionPressed("shoot"))
 		{
 			var direction = _playerSprite.FlipH ? Vector2.Left : Vector2.Right;
 			_shooter.Shoot(direction);
-			
+
 			// SignalHub.EmitOnCreateBullet(Position, direction, 30.0f, _bulletScene);
 
 			// BulletBase pb = _bulletScene.Instantiate<BulletBase>();
 			// pb.Setup(direction, 300.0f);
 			// CallDeferred(MethodName.AddChild, pb);
 		}
-		if(@event.IsActionPressed("test"))
+		if (@event.IsActionPressed("test"))
 		{
 			SignalHub.EmitOnCreateExplosion(GlobalPosition);
 		}
@@ -70,14 +84,14 @@ public partial class Player : CharacterBody2D
 	{
 		velocity.X = Input.GetAxis("left", "right") * RUN_SPEED;
 		// if(IsOnFloor() && _jumped)
-		if(_jumped)
+		if (_jumped)
 		{
 			velocity.Y = JUMP_SPEED;
 			_jumpSound.Play();
-		    _jumped = false;
+			_jumped = false;
 		}
 
-		if(!Mathf.IsZeroApprox(velocity.X))
+		if (!Mathf.IsZeroApprox(velocity.X))
 		{
 			_playerSprite.FlipH = velocity.X < 0;
 		}

@@ -4,6 +4,7 @@ using System;
 public partial class ObjectMaker : Node
 {
 	[Export] private PackedScene _explosion;
+	[Export] private PackedScene _fruitPickup;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -17,6 +18,10 @@ public partial class ObjectMaker : Node
 		Explosion explode = _explosion.Instantiate<Explosion>();
 		explode.GlobalPosition = pos;
 		CallDeferred(MethodName.AddObject, explode);
+
+		FruitPickup fp = _fruitPickup.Instantiate<FruitPickup>();
+		fp.GlobalPosition = pos;
+		CallDeferred(MethodName.AddObject, fp);
 	}
 
     private void OnCreateBullet(Vector2 pos, Vector2 dir, float speed, PackedScene scene)

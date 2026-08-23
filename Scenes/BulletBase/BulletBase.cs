@@ -9,13 +9,26 @@ public partial class BulletBase : Area2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		GD.Print($"Position: {Position}");
-		GD.Print($"Global Position: {GlobalPosition}");
-		GD.Print($"Bullet Position Breakpoint");
+		AreaEntered += OnAreaEntered;
+		BodyEntered += OnBodyEntered;
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _PhysicsProcess(double delta)
+    private void OnBodyEntered(Node2D body)
+    {
+        if(body is TileMapLayer)
+		{
+			QueueFree();
+		}
+    }
+
+
+    private void OnAreaEntered(Area2D area)
+    {
+        QueueFree();
+    }
+
+    // Called every frame. 'delta' is the elapsed time since the previous frame.
+    public override void _PhysicsProcess(double delta)
 	{
 		Position += _direction * (float)delta;
 	}

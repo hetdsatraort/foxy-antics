@@ -7,7 +7,7 @@
 radius = 5.0
 
 [node name="PlayerBullet" unique_id=556887668 instance=ExtResource("1_hdjt3")]
-collision_layer = 20
+collision_layer = 16
 collision_mask = 11
 
 [node name="Sprite2D" parent="." index="0" unique_id=350689824]
