@@ -11,6 +11,7 @@ public partial class ObjectMaker : Node
 	{
 		SignalHub.Instance.OnCreateBullet += OnCreateBullet;
 		SignalHub.Instance.OnCreateExplosion += OnCreateExplosion;
+		SignalHub.Instance.OnCreatePickup += OnCreatePickup;
 	}
 
     private void OnCreateExplosion(Vector2 pos)
@@ -19,6 +20,13 @@ public partial class ObjectMaker : Node
 		explode.GlobalPosition = pos;
 		CallDeferred(MethodName.AddObject, explode);
 
+		FruitPickup fp = _fruitPickup.Instantiate<FruitPickup>();
+		fp.GlobalPosition = pos;
+		CallDeferred(MethodName.AddObject, fp);
+	}
+
+	private void OnCreatePickup(Vector2 pos)
+	{
 		FruitPickup fp = _fruitPickup.Instantiate<FruitPickup>();
 		fp.GlobalPosition = pos;
 		CallDeferred(MethodName.AddObject, fp);

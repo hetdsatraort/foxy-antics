@@ -32,6 +32,7 @@ public partial class EnemyBase : CharacterBody2D
     private void OnHBAreaEntered(Area2D area)
 	{
 		SignalHub.EmitOnCreateExplosion(GlobalPosition);
+		SignalHub.EmitOnCreatePickup(GlobalPosition);
 		QueueFree();
 	}
 
