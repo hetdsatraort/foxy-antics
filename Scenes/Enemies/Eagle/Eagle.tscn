@@ -1,16 +1,19 @@
 [gd_scene format=3 uid="uid://cstk25s3h4be8"]
 
 [ext_resource type="PackedScene" uid="uid://bmoalljm1tvbg" path="res://Scenes/Enemies/EnemyBase.tscn" id="1_bmpsp"]
-[ext_resource type="Script" uid="uid://ben426kojq8wg" path="res://Scenes/Enemies/Eagle.cs" id="2_ndn0f"]
+[ext_resource type="Script" uid="uid://ben426kojq8wg" path="res://Scenes/Enemies/Eagle/Eagle.cs" id="2_ndn0f"]
+[ext_resource type="PackedScene" uid="uid://c0qtupdlovn7q" path="res://Scenes/Shooter/Shooter.tscn" id="3_grwlx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jmcll"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bmpsp"]
 radius = 16.0
 
-[node name="Eagle" unique_id=1263706926 instance=ExtResource("1_bmpsp")]
-collision_mask = 20
+[node name="Eagle" unique_id=1263706926 node_paths=PackedStringArray("_shooter", "_rayCast2D") instance=ExtResource("1_bmpsp")]
+collision_mask = 0
 script = ExtResource("2_ndn0f")
+_shooter = NodePath("Shooter")
+_rayCast2D = NodePath("RayCast2D")
 _fallenOffY = 30.0
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=2062512844]
@@ -24,3 +27,7 @@ target_position = Vector2(0, 500)
 collision_mask = 20
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="Shooter" parent="." index="6" unique_id=478957145 instance=ExtResource("3_grwlx")]
+_speed = 80.0
+_shootDelay = 1.0

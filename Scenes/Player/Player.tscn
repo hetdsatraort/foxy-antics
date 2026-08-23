@@ -2,9 +2,12 @@
 
 [ext_resource type="Script" uid="uid://bvik0rxvsxu6v" path="res://Scenes/Player/Player.cs" id="1_h54ih"]
 [ext_resource type="Texture2D" uid="uid://ix048ftxavv3" path="res://Assets/player/player.png" id="1_s0eop"]
+[ext_resource type="PackedScene" uid="uid://dqtieift6vkhn" path="res://Scenes/Explosion/Explosion.tscn" id="2_fk5o5"]
 [ext_resource type="PackedScene" uid="uid://nkn7ueh7e5dp" path="res://Scenes/PlayerCam/PlayerCam.tscn" id="2_ft8w5"]
 [ext_resource type="AudioStream" uid="uid://bn4inkecbwsh2" path="res://Assets/sound/jump.wav" id="4_ude3g"]
 [ext_resource type="PackedScene" uid="uid://qewarrtg6lic" path="res://Scenes/HitBox/HitBox.tscn" id="5_jmcll"]
+[ext_resource type="PackedScene" uid="uid://c0qtupdlovn7q" path="res://Scenes/Shooter/Shooter.tscn" id="6_4wape"]
+[ext_resource type="PackedScene" uid="uid://devta8henbrea" path="res://Scenes/BulletBase/PlayerBullet.tscn" id="7_t26db"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ql73s"]
 radius = 5.0
@@ -202,12 +205,14 @@ graph_offset = Vector2(0, -33.138073)
 radius = 8.0
 height = 24.0
 
-[node name="Player" type="CharacterBody2D" unique_id=326797843 node_paths=PackedStringArray("_debugLabel", "_jumpSound", "_playerSprite")]
+[node name="Player" type="CharacterBody2D" unique_id=326797843 node_paths=PackedStringArray("_debugLabel", "_jumpSound", "_playerSprite", "_shooter")]
 collision_layer = 0
 script = ExtResource("1_h54ih")
 _debugLabel = NodePath("DebugLabel")
 _jumpSound = NodePath("JumpSound")
 _playerSprite = NodePath("Sprite2D")
+_shooter = NodePath("Shooter")
+_explosion = ExtResource("2_fk5o5")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1253005433]
 texture = ExtResource("1_s0eop")
@@ -249,3 +254,7 @@ position = Vector2(0, 5)
 collision_layer = 4
 collision_mask = 10
 Shape = SubResource("CapsuleShape2D_v0s4m")
+
+[node name="Shooter" parent="." unique_id=478957145 instance=ExtResource("6_4wape")]
+_bulletScene = ExtResource("7_t26db")
+_speed = 120.0

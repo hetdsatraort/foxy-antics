@@ -3,14 +3,23 @@ using System;
 
 public partial class ObjectMaker : Node
 {
+	[Export] private PackedScene _explosion;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		SignalHub.Instance.OnCreateBullet += OnCreateBullet;
+		SignalHub.Instance.OnCreateExplosion += OnCreateExplosion;
 	}
 
-	private void OnCreateBullet(Vector2 pos, Vector2 dir, float speed, PackedScene scene)
+    private void OnCreateExplosion(Vector2 pos)
+	{
+		Explosion explode = _explosion.Instantiate<Explosion>();
+		explode.GlobalPosition = pos;
+		CallDeferred(MethodName.AddObject, explode);
+	}
+
+    private void OnCreateBullet(Vector2 pos, Vector2 dir, float speed, PackedScene scene)
 	{
 		BulletBase pb = scene.Instantiate<BulletBase>();
 		pb.Setup(pos, dir, speed);

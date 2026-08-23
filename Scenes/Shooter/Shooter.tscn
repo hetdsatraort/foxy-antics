@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c0qtupdlovn7q"]
+
+[ext_resource type="AudioStream" uid="uid://dtmx6j0yuqdct" path="res://Assets/sound/laser.wav" id="1_081au"]
+[ext_resource type="Script" uid="uid://dy12vcfqtd108" path="res://Scenes/Shooter/Shooter.cs" id="1_v8mo3"]
+[ext_resource type="PackedScene" uid="uid://b4jsdaflfvvec" path="res://Scenes/BulletBase/EnemyBullet.tscn" id="2_wjemi"]
+
+[node name="Shooter" type="Node2D" unique_id=478957145 node_paths=PackedStringArray("_timer", "_audioStream")]
+script = ExtResource("1_v8mo3")
+_bulletScene = ExtResource("2_wjemi")
+_speed = 20.0
+_shootDelay = 0.6
+_timer = NodePath("ShootTimer")
+_audioStream = NodePath("Sound")
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=1093068078]
+autostart = true
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="." unique_id=373884053]
+stream = ExtResource("1_081au")

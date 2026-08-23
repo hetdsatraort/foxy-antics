@@ -26,9 +26,16 @@ public partial class EnemyBase : CharacterBody2D
 		}
 		_screenNotifier.ScreenEntered += OnScreenEntered;
 		_movementTimer.Timeout += OnTimeout;
+		_hitBox.AreaEntered += OnHBAreaEntered;
 	}
 
-	public override void _Process(double delta)
+    private void OnHBAreaEntered(Area2D area)
+	{
+		SignalHub.EmitOnCreateExplosion(GlobalPosition);
+		QueueFree();
+	}
+
+    public override void _Process(double delta)
 	{
 		CallDeferred(MethodName.FallenOff);
 	}
