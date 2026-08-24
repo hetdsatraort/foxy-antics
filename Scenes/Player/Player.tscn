@@ -266,7 +266,7 @@ _shooter = NodePath("Shooter")
 _hitBox = NodePath("HitBox")
 _hurtTimer = NodePath("HurtTimer")
 _lives = 1
-_invincibilityTimer = 4
+_invincibilityTimer = 2
 _invincibleAnimation = NodePath("InvincibleAnimation")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1253005433]

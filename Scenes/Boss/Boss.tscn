@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://8txy2pnxlgke"]
+
+[ext_resource type="PackedScene" uid="uid://c0qtupdlovn7q" path="res://Scenes/Shooter/Shooter.tscn" id="1_b3u3o"]
+[ext_resource type="PackedScene" uid="uid://qewarrtg6lic" path="res://Scenes/HitBox/HitBox.tscn" id="2_xyuww"]
+
+[node name="Boss" type="Node2D" unique_id=2047855565]
+
+[node name="Visuals" type="Node2D" parent="." unique_id=708972837]
+
+[node name="Shooter" parent="Visuals" unique_id=478957145 instance=ExtResource("1_b3u3o")]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals" unique_id=143576947]
+
+[node name="HitBox" parent="Visuals" unique_id=272649906 instance=ExtResource("2_xyuww")]
+
+[node name="Trigger" type="Area2D" parent="." unique_id=1995341015]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger" unique_id=1078687083]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1822425664]
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1534210806]
+anim_player = NodePath("../AnimationPlayer")

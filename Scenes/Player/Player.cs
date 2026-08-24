@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public partial class Player : CharacterBody2D
 {
@@ -24,21 +26,23 @@ public partial class Player : CharacterBody2D
 	[Export] protected Timer _hurtTimer;
 	[Export] private int _lives = 3;
 	[Export] private int _invincibilityTimer = 16;
-	private int _invincibilityTimerRec = 16;
 
 	[Export] private AnimationPlayer _invincibleAnimation;
 	private PackedScene _bulletScene = GD.Load<PackedScene>("res://Scenes/BulletBase/PlayerBullet.tscn");
+	public List<Area2D> _currentDamageAreas = new List<Area2D>();
+	private int _invincibilityTimerRec = 16;
 
 	public override void _Ready()
 	{
 		GoInvincible();
 		_invincibilityTimerRec = _invincibilityTimer;
 		_hitBox.AreaEntered += OnHBAreaEntered;
+		_hitBox.AreaExited += OnHBAreaExited;
 		_hurtTimer.Timeout += HurtTimeoutCallback;
 		_invincibleAnimation.AnimationFinished += OnAnimationInvFinished;
 	}
 
-	private void OnAnimationInvFinished(StringName animName)
+    private void OnAnimationInvFinished(StringName animName)
 	{
 		if(!_invincible) return;
 		
@@ -48,6 +52,10 @@ public partial class Player : CharacterBody2D
 			_invincible = false;
 			_invincibleAnimation.Play("RESET");
 			_invincibilityTimer = _invincibilityTimerRec;
+			if(_currentDamageAreas.Count > 0)
+			{
+				CallDeferred(MethodName.ApplyHit);
+			}
 		}
 		else
 		{
@@ -66,8 +74,20 @@ public partial class Player : CharacterBody2D
 
     private void OnHBAreaEntered(Area2D area)
 	{
+		if(area is HitBox && !_currentDamageAreas.Contains(area))
+		{
+			_currentDamageAreas.Add(area);
+		}
 		CallDeferred(MethodName.ApplyHit);
 	}
+
+    private void OnHBAreaExited(Area2D area)
+    {
+        if(_currentDamageAreas.Contains(area))
+		{
+			_currentDamageAreas.Remove(area);
+		}
+    }
 
 	private void ApplyHit()
 	{
