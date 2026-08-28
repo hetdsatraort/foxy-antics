@@ -1,23 +1,194 @@
 [gd_scene format=3 uid="uid://8txy2pnxlgke"]
 
 [ext_resource type="PackedScene" uid="uid://c0qtupdlovn7q" path="res://Scenes/Shooter/Shooter.tscn" id="1_b3u3o"]
+[ext_resource type="Script" uid="uid://dagtudvtwnaf5" path="res://Scenes/Boss/Boss.cs" id="1_tsvkr"]
+[ext_resource type="Texture2D" uid="uid://brqpdeclu4rax" path="res://Assets/enemies/boss/boss.png" id="2_vxow8"]
 [ext_resource type="PackedScene" uid="uid://qewarrtg6lic" path="res://Scenes/HitBox/HitBox.tscn" id="2_xyuww"]
 
-[node name="Boss" type="Node2D" unique_id=2047855565]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tsvkr"]
+size = Vector2(40, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxow8"]
+size = Vector2(7, 531)
+
+[sub_resource type="Animation" id="Animation_vxow8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -37)]
+}
+
+[sub_resource type="Animation" id="Animation_tsvkr"]
+resource_name = "arrive"
+length = 0.7
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_do0ph"]
+resource_name = "attack"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 1.4, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -37), Vector2(-130, -37), Vector2(0, -130), Vector2(0, -37)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"Shoot"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_mjv7n"]
+resource_name = "pulse"
+length = 3.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -37), Vector2(0, -150), Vector2(0, -37), Vector2(0, -150), Vector2(0, -37), Vector2(0, -150), Vector2(0, -37)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mjv7n"]
+_data = {
+&"RESET": SubResource("Animation_vxow8"),
+&"arrive": SubResource("Animation_tsvkr"),
+&"attack": SubResource("Animation_do0ph"),
+&"pulse": SubResource("Animation_mjv7n")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vxow8"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tsvkr"]
+animation = &"arrive"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mjv7n"]
+animation = &"attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_do0ph"]
+animation = &"pulse"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mjv7n"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_do0ph"]
+advance_mode = 2
+advance_condition = &"on_trigger"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vxow8"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tsvkr"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ccd1b"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ccd1b"]
+states/RESET/node = SubResource("AnimationNodeAnimation_vxow8")
+states/RESET/position = Vector2(307.59998, 100.09601)
+states/Start/position = Vector2(206.4, 99.520004)
+states/arrive/node = SubResource("AnimationNodeAnimation_tsvkr")
+states/arrive/position = Vector2(446, 100.756485)
+states/attack/node = SubResource("AnimationNodeAnimation_mjv7n")
+states/attack/position = Vector2(605.99994, 31.2)
+states/pulse/node = SubResource("AnimationNodeAnimation_do0ph")
+states/pulse/position = Vector2(588.55994, 144.8)
+transitions = ["Start", "RESET", SubResource("AnimationNodeStateMachineTransition_mjv7n"), "RESET", "arrive", SubResource("AnimationNodeStateMachineTransition_do0ph"), "arrive", "pulse", SubResource("AnimationNodeStateMachineTransition_vxow8"), "pulse", "attack", SubResource("AnimationNodeStateMachineTransition_tsvkr"), "attack", "pulse", SubResource("AnimationNodeStateMachineTransition_ccd1b")]
+
+[node name="Boss" type="Node2D" unique_id=2047855565 node_paths=PackedStringArray("_animationTree", "_trigger")]
+script = ExtResource("1_tsvkr")
+_animationTree = NodePath("AnimationTree")
+_trigger = NodePath("Trigger")
 
 [node name="Visuals" type="Node2D" parent="." unique_id=708972837]
+position = Vector2(0, -37)
 
 [node name="Shooter" parent="Visuals" unique_id=478957145 instance=ExtResource("1_b3u3o")]
+_speed = 200.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals" unique_id=143576947]
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("2_vxow8")
 
 [node name="HitBox" parent="Visuals" unique_id=272649906 instance=ExtResource("2_xyuww")]
+collision_layer = 2
+collision_mask = 20
+monitoring = false
+monitorable = false
+Shape = SubResource("RectangleShape2D_tsvkr")
 
 [node name="Trigger" type="Area2D" parent="." unique_id=1995341015]
+position = Vector2(-130, -232)
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger" unique_id=1078687083]
+shape = SubResource("RectangleShape2D_vxow8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1822425664]
+libraries/ = SubResource("AnimationLibrary_mjv7n")
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=1534210806]
+deterministic = false
+tree_root = SubResource("AnimationNodeStateMachine_ccd1b")
 anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/on_trigger = false

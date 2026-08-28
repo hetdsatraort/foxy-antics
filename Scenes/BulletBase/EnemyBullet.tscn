@@ -7,7 +7,7 @@
 radius = 3.0
 
 [node name="EnemyBullet" unique_id=556887668 instance=ExtResource("1_83qyy")]
-collision_layer = 10
+collision_layer = 8
 collision_mask = 21
 
 [node name="Sprite2D" parent="." index="0" unique_id=350689824]

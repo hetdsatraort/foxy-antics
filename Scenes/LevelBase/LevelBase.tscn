@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cx45uj01hja50" path="res://Scenes/Enemies/Frog/Frog.tscn" id="5_lmtt4"]
 [ext_resource type="PackedScene" uid="uid://cstk25s3h4be8" path="res://Scenes/Enemies/Eagle/Eagle.tscn" id="6_ooqsx"]
 [ext_resource type="PackedScene" uid="uid://devta8henbrea" path="res://Scenes/BulletBase/PlayerBullet.tscn" id="7_txgif"]
+[ext_resource type="PackedScene" uid="uid://8txy2pnxlgke" path="res://Scenes/Boss/Boss.tscn" id="8_dufl6"]
 [ext_resource type="PackedScene" uid="uid://oggdd0yg8in1" path="res://Scenes/ObjectMaker/ObjectMaker.tscn" id="8_o536s"]
 
 [node name="LevelBase" type="Node" unique_id=336341704]
@@ -37,5 +38,8 @@ collision_mask = 1
 
 [node name="Snail" parent="Enemies" unique_id=1263706926 instance=ExtResource("4_3lxj6")]
 position = Vector2(479, -68)
+
+[node name="Boss" parent="Enemies" unique_id=2047855565 instance=ExtResource("8_dufl6")]
+position = Vector2(638, -36)
 
 [node name="ObjectMaker" parent="." unique_id=1384559784 instance=ExtResource("8_o536s")]
