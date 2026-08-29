@@ -37,6 +37,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, -37)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_tsvkr"]
 resource_name = "arrive"
@@ -53,6 +65,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1e-05, 1e-05), Vector2(0.5, 0.5)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"ActivateHB"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_do0ph"]
@@ -86,6 +112,23 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_ccd1b"]
+resource_name = "hit"
+length = 2.0
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19430436, 0.4, 0.5943044, 0.8, 1, 1.2, 1.4, 1.6, 1.8000001, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.6696236, 1.2513996e-06, 3.3691526e-07, 1), Color(1, 1, 1, 1), Color(0.6696236, 1.2513996e-06, 3.3691526e-07, 1), Color(1, 1, 1, 1), Color(0.6696236, 1.2513996e-06, 3.3691526e-07, 1), Color(1, 1, 1, 1), Color(0.6696236, 1.2513996e-06, 3.3691526e-07, 1), Color(1, 1, 1, 1), Color(0.6696236, 1.2513996e-06, 3.3691526e-07, 1), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_mjv7n"]
 resource_name = "pulse"
 length = 3.0
@@ -108,6 +151,7 @@ _data = {
 &"RESET": SubResource("Animation_vxow8"),
 &"arrive": SubResource("Animation_tsvkr"),
 &"attack": SubResource("Animation_do0ph"),
+&"hit": SubResource("Animation_ccd1b"),
 &"pulse": SubResource("Animation_mjv7n")
 }
 
@@ -119,6 +163,9 @@ animation = &"arrive"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mjv7n"]
 animation = &"attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ccd1b"]
+animation = &"hit"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_do0ph"]
 animation = &"pulse"
@@ -142,28 +189,38 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_763pt"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ccd1b"]
 states/RESET/node = SubResource("AnimationNodeAnimation_vxow8")
 states/RESET/position = Vector2(307.59998, 100.09601)
-states/Start/position = Vector2(206.4, 99.520004)
+states/Start/position = Vector2(206.4, 99.744)
 states/arrive/node = SubResource("AnimationNodeAnimation_tsvkr")
 states/arrive/position = Vector2(446, 100.756485)
 states/attack/node = SubResource("AnimationNodeAnimation_mjv7n")
 states/attack/position = Vector2(605.99994, 31.2)
+states/hit/node = SubResource("AnimationNodeAnimation_ccd1b")
+states/hit/position = Vector2(739.6, 194.4)
 states/pulse/node = SubResource("AnimationNodeAnimation_do0ph")
 states/pulse/position = Vector2(588.55994, 144.8)
-transitions = ["Start", "RESET", SubResource("AnimationNodeStateMachineTransition_mjv7n"), "RESET", "arrive", SubResource("AnimationNodeStateMachineTransition_do0ph"), "arrive", "pulse", SubResource("AnimationNodeStateMachineTransition_vxow8"), "pulse", "attack", SubResource("AnimationNodeStateMachineTransition_tsvkr"), "attack", "pulse", SubResource("AnimationNodeStateMachineTransition_ccd1b")]
+transitions = ["Start", "RESET", SubResource("AnimationNodeStateMachineTransition_mjv7n"), "RESET", "arrive", SubResource("AnimationNodeStateMachineTransition_do0ph"), "arrive", "pulse", SubResource("AnimationNodeStateMachineTransition_vxow8"), "pulse", "attack", SubResource("AnimationNodeStateMachineTransition_tsvkr"), "attack", "pulse", SubResource("AnimationNodeStateMachineTransition_ccd1b"), "hit", "pulse", SubResource("AnimationNodeStateMachineTransition_763pt")]
 
-[node name="Boss" type="Node2D" unique_id=2047855565 node_paths=PackedStringArray("_animationTree", "_trigger")]
+[node name="Boss" type="Node2D" unique_id=2047855565 node_paths=PackedStringArray("_animationTree", "_trigger", "_shooter", "_visuals", "_hitbox")]
 script = ExtResource("1_tsvkr")
 _animationTree = NodePath("AnimationTree")
 _trigger = NodePath("Trigger")
+_shooter = NodePath("Visuals/Shooter")
+_visuals = NodePath("Visuals")
+_hitbox = NodePath("Visuals/HitBox")
 
 [node name="Visuals" type="Node2D" parent="." unique_id=708972837]
 position = Vector2(0, -37)
 
 [node name="Shooter" parent="Visuals" unique_id=478957145 instance=ExtResource("1_b3u3o")]
 _speed = 200.0
+_shootDelay = 0.2
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals" unique_id=143576947]
 scale = Vector2(1e-05, 1e-05)

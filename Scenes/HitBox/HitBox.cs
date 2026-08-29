@@ -32,4 +32,10 @@ public partial class HitBox : Area2D
 	public override void _Process(double delta)
 	{
 	}
+
+	public void Activate(bool isOn)
+	{
+		SetDeferred(Area2D.PropertyName.Monitoring, isOn);
+		SetDeferred(Area2D.PropertyName.Monitorable, isOn);
+	}
 }

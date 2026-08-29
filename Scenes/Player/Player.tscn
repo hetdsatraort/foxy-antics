@@ -270,12 +270,13 @@ _invincibilityTimer = 2
 _invincibleAnimation = NodePath("InvincibleAnimation")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1253005433]
+position = Vector2(0.5, -16)
 texture = ExtResource("1_s0eop")
 hframes = 19
 frame = 13
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=717189287]
-position = Vector2(0, 5)
+position = Vector2(0.5, -11)
 shape = SubResource("CapsuleShape2D_ql73s")
 
 [node name="PlayerCam" parent="." unique_id=858869596 instance=ExtResource("2_ft8w5")]
@@ -305,14 +306,15 @@ advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="HitBox" parent="." unique_id=272649906 instance=ExtResource("5_jmcll")]
-position = Vector2(0, 5)
+position = Vector2(0.5, -11)
 collision_layer = 4
 collision_mask = 10
 Shape = SubResource("CapsuleShape2D_v0s4m")
 
 [node name="Shooter" parent="." unique_id=478957145 instance=ExtResource("6_4wape")]
+position = Vector2(0.5, -16)
 _bulletScene = ExtResource("7_t26db")
-_speed = 120.0
+_speed = 500.0
 
 [node name="HurtSound" type="AudioStreamPlayer2D" parent="." unique_id=1542134578]
 stream = ExtResource("8_fk5o5")

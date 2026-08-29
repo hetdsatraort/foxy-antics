@@ -47,7 +47,7 @@ public partial class Player : CharacterBody2D
 		if(!_invincible) return;
 		
 		_invincibilityTimer -= 2;
-		if (_invincibilityTimer <= 0)
+		if (_invincibilityTimer <= 0 && animName == "invincible")
 		{
 			_invincible = false;
 			_invincibleAnimation.Play("RESET");
@@ -149,7 +149,7 @@ public partial class Player : CharacterBody2D
 		{
 			_invincibilityTimer = 1000;
 			GoInvincible();
-			_invincibilityTimer = _invincibilityTimerRec;
+			// _invincibilityTimer = _invincibilityTimerRec;
 		}
 		if (@event.IsActionPressed("test2"))
 		{
