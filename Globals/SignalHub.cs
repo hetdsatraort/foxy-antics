@@ -9,6 +9,7 @@ public partial class SignalHub : Node
 	[Signal] public delegate void OnCreatePickupEventHandler(Vector2 pos);
 	[Signal] public delegate void OnBossKilledEventHandler();
 	[Signal] public delegate void OnLevelCompleteEventHandler();
+	[Signal] public delegate void OnPointsScoredEventHandler(int points);
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -43,5 +44,10 @@ public partial class SignalHub : Node
 	public static void EmitOnLevelComplete()
 	{
 		Instance.EmitSignal(SignalName.OnLevelComplete);
+	}
+
+	public static void EmitOnPointsScored(int points)
+	{
+		Instance.EmitSignal(SignalName.OnPointsScored, points);
 	}
 }

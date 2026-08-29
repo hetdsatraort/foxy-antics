@@ -12,6 +12,7 @@ public partial class EnemyBase : CharacterBody2D
 	[Export] protected float _fallenOffY = 200.0f;
 
 	[Export] protected Timer _movementTimer;
+	[Export] int _points = 2;
 
 	protected Player _playerRef;
 	protected float _gravity = 800.0f;
@@ -33,6 +34,7 @@ public partial class EnemyBase : CharacterBody2D
 	{
 		SignalHub.EmitOnCreateExplosion(GlobalPosition);
 		SignalHub.EmitOnCreatePickup(GlobalPosition);
+		SignalHub.EmitOnPointsScored(_points);
 		QueueFree();
 	}
 

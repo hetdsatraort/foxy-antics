@@ -6,7 +6,7 @@ public partial class FruitPickup : Area2D
 {
 	[Export] AnimatedSprite2D _animatedSprite;
 	[Export] AudioStreamPlayer2D _audioStream;
-	[Export] int points = 2;
+	[Export] int _points = 2;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -18,6 +18,7 @@ public partial class FruitPickup : Area2D
     private void OnAreaEntered(Area2D area)
     {
         _audioStream.Play();
+		SignalHub.EmitOnPointsScored(_points);
 		Hide();
     }
 
