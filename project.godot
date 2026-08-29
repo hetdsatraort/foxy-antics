@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="FoxyAntics"
-run/main_scene="uid://cchhw3r0lrtpk"
-config/features=PackedStringArray("4.7", "C#", "GL Compatibility")
+run/main_scene="uid://m54n8xdlyydl"
+config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
 config/icon="uid://futktopa0uvp"
 
 [autoload]

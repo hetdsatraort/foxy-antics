@@ -7,6 +7,8 @@ public partial class SignalHub : Node
 	[Signal] public delegate void OnCreateBulletEventHandler(Vector2 pos, Vector2 dir, float speed, PackedScene scene);
 	[Signal] public delegate void OnCreateExplosionEventHandler(Vector2 pos);
 	[Signal] public delegate void OnCreatePickupEventHandler(Vector2 pos);
+	[Signal] public delegate void OnBossKilledEventHandler();
+	[Signal] public delegate void OnLevelCompleteEventHandler();
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -31,5 +33,15 @@ public partial class SignalHub : Node
 	public static void EmitOnCreatePickup(Vector2 pos)
 	{
 		Instance.EmitSignal(SignalName.OnCreatePickup, pos);
+	}
+
+	public static void EmitOnBossKilled()
+	{
+		Instance.EmitSignal(SignalName.OnBossKilled);
+	}
+
+	public static void EmitOnLevelComplete()
+	{
+		Instance.EmitSignal(SignalName.OnLevelComplete);
 	}
 }

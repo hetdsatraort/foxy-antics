@@ -13,9 +13,9 @@ public partial class Main : Control
 	{
 	}
 
-	public override void _UnhandledInput(InputEvent @event)
+	public override void _Input(InputEvent @event)
 	{
-		if(Input.IsActionJustPressed("quit"))
+		if(Input.IsActionJustPressed("shoot"))
 		{
 			GameManager.StartGame();
 		}

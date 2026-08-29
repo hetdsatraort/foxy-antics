@@ -6,7 +6,7 @@ using System.Linq;
 public partial class Player : CharacterBody2D
 {
 	private const float GRAVITY = 690.0f;
-	private const float RUN_SPEED = 120.0f;
+	private const float RUN_SPEED = 200.0f;
 	private const float JUMP_SPEED = -400.0f;
 	private const float MAX_FALL = 300.0f;
 	private Vector2 HurtJumpVelocity = new Vector2(0, -330.0f);

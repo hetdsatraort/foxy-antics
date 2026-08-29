@@ -71,6 +71,7 @@ public partial class Boss : Node2D
 		
 		if(_lives <= 0)
 		{
+			SignalHub.EmitOnBossKilled();
 			QueueFree();
 		}
 	}

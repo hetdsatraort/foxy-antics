@@ -14,7 +14,14 @@ public partial class ObjectMaker : Node
 		SignalHub.Instance.OnCreatePickup += OnCreatePickup;
 	}
 
-    private void OnCreateExplosion(Vector2 pos)
+	public override void _ExitTree()
+	{
+		SignalHub.Instance.OnCreateBullet -= OnCreateBullet;
+		SignalHub.Instance.OnCreateExplosion -= OnCreateExplosion;
+		SignalHub.Instance.OnCreatePickup -= OnCreatePickup;
+	}
+
+	private void OnCreateExplosion(Vector2 pos)
 	{
 		Explosion explode = _explosion.Instantiate<Explosion>();
 		explode.GlobalPosition = pos;
@@ -32,7 +39,7 @@ public partial class ObjectMaker : Node
 		CallDeferred(MethodName.AddObject, fp);
 	}
 
-    private void OnCreateBullet(Vector2 pos, Vector2 dir, float speed, PackedScene scene)
+	private void OnCreateBullet(Vector2 pos, Vector2 dir, float speed, PackedScene scene)
 	{
 		BulletBase pb = scene.Instantiate<BulletBase>();
 		pb.Setup(pos, dir, speed);

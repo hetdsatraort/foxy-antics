@@ -134,8 +134,12 @@ states/open/position = Vector2(432.4, 99.68)
 transitions = ["Start", "RESET", SubResource("AnimationNodeStateMachineTransition_tvl3x"), "RESET", "open", SubResource("AnimationNodeStateMachineTransition_y5he0"), "open", "flap", SubResource("AnimationNodeStateMachineTransition_jowfu")]
 graph_offset = Vector2(122.74825, 0)
 
-[node name="Checkpoint" type="Area2D" unique_id=1239582509]
+[node name="Checkpoint" type="Area2D" unique_id=1239582509 node_paths=PackedStringArray("_animationTree")]
+collision_layer = 0
+collision_mask = 4
+monitoring = false
 script = ExtResource("1_y5he0")
+_animationTree = NodePath("AnimationTree")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=565324407]
 position = Vector2(0, -24)
@@ -158,4 +162,4 @@ libraries/ = SubResource("AnimationLibrary_y5he0")
 deterministic = false
 tree_root = SubResource("AnimationNodeStateMachine_qwc0f")
 anim_player = NodePath("../AnimationPlayer")
-parameters/conditions/boss_killed = true
+parameters/conditions/boss_killed = false
