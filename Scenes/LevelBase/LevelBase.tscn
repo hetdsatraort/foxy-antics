@@ -14,18 +14,13 @@
 [ext_resource type="PackedScene" uid="uid://deuss0hpqafvu" path="res://Scenes/BallSpikes/BallSpikes.tscn" id="12_y0wgt"]
 [ext_resource type="PackedScene" uid="uid://bnvo5vlcml1ln" path="res://Scenes/FloorSpike/FloorSpike.tscn" id="13_1dptj"]
 [ext_resource type="PackedScene" uid="uid://ds554phr0sm2p" path="res://Scenes/MovingPlatformPf/MovingPlatformPf.tscn" id="13_7m2km"]
+[ext_resource type="PackedScene" uid="uid://dtk1e7oysltxi" path="res://Scenes/AnimatableMovingPlatform/AnimatableMovingPlatform.tscn" id="15_8dc2e"]
 
 [sub_resource type="Curve2D" id="Curve2D_k6lws"]
 _data = {
-"points": PackedVector2Array(325.06595, 291.64795, -325.06595, -291.64795, -207, -295, -303.3492, -200.6019, 303.3492, 200.6019, -667, -210, 391.41833, 234.85101, -391.41833, -234.85101, -939, -74, -97.04585, -291.13757, 97.04585, 291.13757, -1399, 169, 284.1697, -230.88788, -284.1697, 230.88788, -351, 534, -351.79123, 400.31415, 351.79123, -400.31415, 1160, 540, -473.61618, 349.29193, 473.61618, -349.29193, 2371, 98, 444.01517, 1018.2748, -444.01517, -1018.2748, 2664, -521, 307.85052, -130.24445, -307.85052, 130.24445, 1747, -226, 266.4091, 171.68587, -266.4091, -171.68587, 1312, -426, -11.8404045, -148.00505, 11.8404045, 148.00505, 866, -390, 301.93033, -88.80303, -301.93033, 88.80303, 1084, 81, 142.08485, -53.281822, -142.08485, 53.281822, 361, -429, 167.08998, -24.303997, -167.08998, 24.303997, 252, 148, -48.607994, 243.03998, 48.607994, -243.03998, -207, -295)
+"points": PackedVector2Array(325.06595, 291.64795, -325.06595, -291.64795, -207, -295, -303.3492, -200.6019, 303.3492, 200.6019, -514, -159, 391.41833, 234.85101, -391.41833, -234.85101, -485, -321, -97.04585, -291.13757, 97.04585, 291.13757, 657, -497, 284.1697, -230.88788, -284.1697, 230.88788, -483, 17, 180.77354, 175.75206, -180.77354, -175.75206, 251, -523, -351.79123, 400.31415, 351.79123, -400.31415, -256, -493, -473.61618, 349.29193, 473.61618, -349.29193, -194, -66, -287.93716, -101.18176, 287.93716, 101.18176, 24, -422, 307.85052, -130.24445, -307.85052, 130.24445, 131, -404, -26.842232, -256.40378, 26.842232, 256.40378, -533, -75, -11.8404045, -148.00505, 11.8404045, 148.00505, 612, -170, 301.93033, -88.80303, -301.93033, 88.80303, -62, -515, 142.08485, -53.281822, -142.08485, 53.281822, 361, -429, 167.08998, -24.303997, -167.08998, 24.303997, 79, -82, -48.607994, 243.03998, 48.607994, -243.03998, -207, -295)
 }
-point_count = 15
-
-[sub_resource type="Curve2D" id="Curve2D_y0wgt"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -44, -252, 0, 0, 0, 0, 26, -39, 0, 0, 0, 0, 280, -57, 0, 0, 0, 0, 271, -228, 0, 0, 0, 0, 188, -312, 0, 0, 0, 0, 32, -310, 0, 0, 0, 0, -44, -252)
-}
-point_count = 7
+point_count = 16
 
 [sub_resource type="Curve2D" id="Curve2D_7m2km"]
 _data = {
@@ -39,6 +34,12 @@ _data = {
 }
 point_count = 3
 
+[sub_resource type="Curve2D" id="Curve2D_y0wgt"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -44, -252, 0, 0, 0, 0, 26, -39, 0, 0, 0, 0, 280, -57, 0, 0, 0, 0, 271, -228, 0, 0, 0, 0, 188, -312, 0, 0, 0, 0, 32, -310, 0, 0, 0, 0, -44, -252)
+}
+point_count = 7
+
 [node name="LevelBase" type="Node" unique_id=336341704]
 script = ExtResource("1_5ufo3")
 
@@ -49,6 +50,7 @@ tile_set = ExtResource("2_78m1b")
 
 [node name="Player" parent="." unique_id=326797843 instance=ExtResource("3_78m1b")]
 position = Vector2(137, -150)
+_lives = 10
 _invincibilityTimer = 4
 
 [node name="Enemies" type="Node" parent="." unique_id=105181249]
@@ -73,17 +75,8 @@ position = Vector2(638, -36)
 
 [node name="ObjectMaker" parent="." unique_id=1384559784 instance=ExtResource("8_o536s")]
 
-[node name="Checkpoint" parent="." unique_id=1239582509 instance=ExtResource("10_hcoko")]
-position = Vector2(724, -38)
-
-[node name="Checkpoint2" parent="." unique_id=662139781 instance=ExtResource("10_hcoko")]
-position = Vector2(784, -38)
-
-[node name="Checkpoint3" parent="." unique_id=1824591524 instance=ExtResource("10_hcoko")]
-position = Vector2(822, -37)
-
-[node name="Checkpoint4" parent="." unique_id=1293857550 instance=ExtResource("10_hcoko")]
-position = Vector2(861, -37)
+[node name="FinishCheckPoint" parent="." unique_id=1293857550 instance=ExtResource("10_hcoko")]
+position = Vector2(957, -38)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1753334179]
 
@@ -97,12 +90,34 @@ curve = SubResource("Curve2D_k6lws")
 [node name="BallSpikes" parent="BallSpikes/Path2D" unique_id=1734041148 instance=ExtResource("12_y0wgt")]
 position = Vector2(-207, -295)
 rotation = 5072.7246
+_speed = 1000.0
 
-[node name="Path2D2" type="Path2D" parent="BallSpikes" unique_id=1727170281]
-curve = SubResource("Curve2D_y0wgt")
+[node name="Path2D2" type="Path2D" parent="BallSpikes" unique_id=423193883]
+curve = SubResource("Curve2D_k6lws")
 
-[node name="MovingPlatformPF" parent="BallSpikes/Path2D2" unique_id=663975875 instance=ExtResource("13_7m2km")]
-position = Vector2(-44, -252)
+[node name="BallSpikes" parent="BallSpikes/Path2D2" unique_id=1788427808 instance=ExtResource("12_y0wgt")]
+position = Vector2(-434.55655, 43.519264)
+rotation = 5072.7246
+progress = 4331.4
+_speed = 1000.0
+
+[node name="Path2D3" type="Path2D" parent="BallSpikes" unique_id=575642350]
+curve = SubResource("Curve2D_k6lws")
+
+[node name="BallSpikes" parent="BallSpikes/Path2D3" unique_id=1118705860 instance=ExtResource("12_y0wgt")]
+position = Vector2(146.53146, -395.06998)
+rotation = 5072.7246
+progress = 7732.56
+_speed = 1000.0
+
+[node name="Path2D4" type="Path2D" parent="BallSpikes" unique_id=1394041276]
+curve = SubResource("Curve2D_k6lws")
+
+[node name="BallSpikes" parent="BallSpikes/Path2D4" unique_id=1844497356 instance=ExtResource("12_y0wgt")]
+position = Vector2(-29.12235, -62.645042)
+rotation = 5072.7246
+progress = 9446.168
+_speed = 1000.0
 
 [node name="FloorSpikes" type="Node" parent="." unique_id=174922963]
 
@@ -129,3 +144,19 @@ curve = SubResource("Curve2D_8dc2e")
 
 [node name="MovingPlatformPF" parent="Platforms/PF2" unique_id=159592399 instance=ExtResource("13_7m2km")]
 position = Vector2(-293, -55)
+
+[node name="PF3" type="Path2D" parent="Platforms" unique_id=1727170281]
+curve = SubResource("Curve2D_y0wgt")
+
+[node name="MovingPlatformPF" parent="Platforms/PF3" unique_id=663975875 instance=ExtResource("13_7m2km")]
+position = Vector2(-44, -252)
+
+[node name="AnimatableMovingPlatform" parent="Platforms" unique_id=1409733375 node_paths=PackedStringArray("_from", "_to") instance=ExtResource("15_8dc2e")]
+_from = NodePath("../AMPM1")
+_to = NodePath("../AMPM2")
+
+[node name="AMPM1" type="Marker2D" parent="Platforms" unique_id=1656976959]
+position = Vector2(31, 69)
+
+[node name="AMPM2" type="Marker2D" parent="Platforms" unique_id=414499263]
+position = Vector2(23, -105)
