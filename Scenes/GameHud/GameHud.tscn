@@ -17,7 +17,7 @@ outline_color = Color(0, 1, 1, 1)
 shadow_size = 20
 shadow_color = Color(1, 0, 1, 0.99607843)
 
-[node name="GameHUD" type="Control" unique_id=669316696 node_paths=PackedStringArray("_youreWinnerSound", "_gameOverSound", "_gameOverLabel", "_pressShotLabel", "_levelLabel", "_pointsLabel", "_timer")]
+[node name="GameHUD" type="Control" unique_id=669316696 node_paths=PackedStringArray("_youreWinnerSound", "_gameOverSound", "_gameOverLabel", "_pressShotLabel", "_levelLabel", "_pointsLabel", "_timer", "_hbHearts")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -33,6 +33,7 @@ _pressShotLabel = NodePath("VBoxContainer/Label2")
 _levelLabel = NodePath("MarginContainer/HBoxContainer/LevelLabel")
 _pointsLabel = NodePath("MarginContainer/HBoxContainer/PointsLabel")
 _timer = NodePath("CompleteTimer")
+_hbHearts = NodePath("MarginContainer/HBoxContainer2")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1236990907]
 layout_mode = 1

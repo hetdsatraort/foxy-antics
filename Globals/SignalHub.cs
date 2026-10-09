@@ -8,8 +8,9 @@ public partial class SignalHub : Node
 	[Signal] public delegate void OnCreateExplosionEventHandler(Vector2 pos);
 	[Signal] public delegate void OnCreatePickupEventHandler(Vector2 pos);
 	[Signal] public delegate void OnBossKilledEventHandler();
-	[Signal] public delegate void OnLevelCompleteEventHandler();
+	[Signal] public delegate void OnLevelCompleteEventHandler(bool complete);
 	[Signal] public delegate void OnPointsScoredEventHandler(int points);
+	[Signal] public delegate void OnPlayerHitEventHandler(int lives, bool shake);
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -41,13 +42,17 @@ public partial class SignalHub : Node
 		Instance.EmitSignal(SignalName.OnBossKilled);
 	}
 
-	public static void EmitOnLevelComplete()
+	public static void EmitOnLevelComplete(bool complete)
 	{
-		Instance.EmitSignal(SignalName.OnLevelComplete);
+		Instance.EmitSignal(SignalName.OnLevelComplete, complete);
 	}
 
 	public static void EmitOnPointsScored(int points)
 	{
 		Instance.EmitSignal(SignalName.OnPointsScored, points);
+	}
+	public static void EmitOnPlayerHit(int lives, bool shake)
+	{
+		Instance.EmitSignal(SignalName.OnPlayerHit, lives, shake);
 	}
 }

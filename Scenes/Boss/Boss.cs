@@ -71,6 +71,8 @@ public partial class Boss : Node2D
 		
 		if(_lives <= 0)
 		{
+			SignalHub.EmitOnCreateExplosion(GlobalPosition);
+			SignalHub.EmitOnCreatePickup(GlobalPosition);
 			SignalHub.EmitOnBossKilled();
 			SignalHub.EmitOnPointsScored(_points);
 			QueueFree();

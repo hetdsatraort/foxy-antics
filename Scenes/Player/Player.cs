@@ -26,6 +26,7 @@ public partial class Player : CharacterBody2D
 	[Export] protected Timer _hurtTimer;
 	[Export] private int _lives = 3;
 	[Export] private int _invincibilityTimer = 16;
+	[Export] protected float _fallenOffY = 300.0f;
 
 	[Export] private AnimationPlayer _invincibleAnimation;
 	private PackedScene _bulletScene = GD.Load<PackedScene>("res://Scenes/BulletBase/PlayerBullet.tscn");
@@ -40,6 +41,13 @@ public partial class Player : CharacterBody2D
 		_hitBox.AreaExited += OnHBAreaExited;
 		_hurtTimer.Timeout += HurtTimeoutCallback;
 		_invincibleAnimation.AnimationFinished += OnAnimationInvFinished;
+
+		CallDeferred(nameof(HUDInit));
+	}
+
+	private void HUDInit()
+	{
+		SignalHub.EmitOnPlayerHit(_lives, false);	
 	}
 
     private void OnAnimationInvFinished(StringName animName)
@@ -66,10 +74,6 @@ public partial class Player : CharacterBody2D
 	private void HurtTimeoutCallback()
 	{
 		_hurt = false;
-		if (_lives == 0)
-		{
-			QueueFree();
-		}
 	}
 
     private void OnHBAreaEntered(Area2D area)
@@ -92,7 +96,8 @@ public partial class Player : CharacterBody2D
 	private void ApplyHit()
 	{
 		if(_invincible) return;
-
+		
+		ReduceLives(1);
 		ApplyHurt();
 		GoInvincible();
 	}
@@ -102,12 +107,17 @@ public partial class Player : CharacterBody2D
 		
 		_hurt = true;
 		// SignalHub.EmitOnCreateExplosion(GlobalPosition);
-		_lives--;
 		_hurtSound.Play();
 		GD.Print($"Lives Left: {_lives}");
 		Velocity = HurtJumpVelocity;
 		_hurtTimer.Start();
 		
+	}
+
+	private void ReduceLives(int reduction = 1)
+	{
+		_lives -= reduction;
+		SignalHub.EmitOnPlayerHit(_lives, true);
 	}
 
 	private void GoInvincible()
@@ -118,6 +128,14 @@ public partial class Player : CharacterBody2D
 			_jumpSound.Play();
 		}
 		_invincibleAnimation.Play("invincible");		
+	}
+
+	private void FallenOff()
+	{
+		if(GlobalPosition.Y > _fallenOffY)
+		{
+			ReduceLives(_lives);
+		}
 	}
 
     public override void _EnterTree()

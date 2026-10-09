@@ -33,7 +33,7 @@ public partial class Checkpoint : Area2D
 
 	private void OnAreaEntered(Area2D area)
 	{
-		SignalHub.EmitOnLevelComplete();
+		SignalHub.EmitOnLevelComplete(true);
 		AreaEntered -= OnAreaEntered;
 	}
 

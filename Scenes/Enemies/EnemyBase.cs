@@ -9,7 +9,7 @@ public partial class EnemyBase : CharacterBody2D
 	[Export] protected HitBox _hitBox;
 
 	[Export] protected float _speed = 30.0f;
-	[Export] protected float _fallenOffY = 200.0f;
+	[Export] protected float _fallenOffY = 300.0f;
 
 	[Export] protected Timer _movementTimer;
 	[Export] int _points = 2;
