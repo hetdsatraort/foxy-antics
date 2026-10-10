@@ -30,7 +30,7 @@ point_count = 3
 
 [sub_resource type="Curve2D" id="Curve2D_8dc2e"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -293, -55, 0, 0, 0, 0, -92, -502, 0, 0, 0, 0, -293, -55)
+"points": PackedVector2Array(0, 0, 0, 0, -298, 8, 0, 0, 0, 0, -92, -502, 0, 0, 0, 0, -298, 8)
 }
 point_count = 3
 
@@ -143,7 +143,7 @@ position = Vector2(-393, 0)
 curve = SubResource("Curve2D_8dc2e")
 
 [node name="MovingPlatformPF" parent="Platforms/PF2" unique_id=159592399 instance=ExtResource("13_7m2km")]
-position = Vector2(-293, -55)
+position = Vector2(-298, 8)
 
 [node name="PF3" type="Path2D" parent="Platforms" unique_id=1727170281]
 curve = SubResource("Curve2D_y0wgt")

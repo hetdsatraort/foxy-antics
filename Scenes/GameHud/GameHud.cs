@@ -80,6 +80,7 @@ public partial class GameHud : Control
 
 	private void HUDTimeout()
 	{
+		_gameOverLabel.Text = string.Empty;
 		_pressShotLabel.Visible = true;
 		GetTree().Paused = false;
 	}

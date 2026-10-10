@@ -48,6 +48,7 @@ public partial class Player : CharacterBody2D
 	private void HUDInit()
 	{
 		SignalHub.EmitOnPlayerHit(_lives, false);	
+		SignalHub.Instance.OnLevelComplete += (bool completed) => {GoInvincible();};
 	}
 
     private void OnAnimationInvFinished(StringName animName)

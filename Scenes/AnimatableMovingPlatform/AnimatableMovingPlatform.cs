@@ -8,10 +8,16 @@ public partial class AnimatableMovingPlatform : AnimatableBody2D
 	[Export] float _speed = 100.0f;
 
 	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
+	public override async void _Ready()
 	{
 		if(_from == null || _to == null) QueueFree();
+
 		GlobalPosition = _from.GlobalPosition;
+
+		//these were unnecessary for godot 4.7.2 but if synctophysics causes a jump in position before/after ready - these are used.
+		await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
+		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+		
 		MoveToTarget(_to.GlobalPosition);
 	}
 
