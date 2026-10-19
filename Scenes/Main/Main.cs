@@ -9,6 +9,7 @@ public partial class Main : Control
 	public override void _Ready()
 	{
 		GetTree().Paused = false;
+		ScoreManager.Instance.CachedScore = 0;		
 		SetUpScores();
 	}
 
