@@ -14,7 +14,7 @@ public partial class HighScoreCollection : Resource
 		HighScores = new(lsHighScores);
 	}
 
-	private void AddNewScore(int score)
+	public void AddNewScore(int score)
 	{
 		HighScore hs = new HighScore();
 		hs.Score = score;

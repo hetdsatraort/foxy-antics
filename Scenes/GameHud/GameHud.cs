@@ -60,6 +60,7 @@ public partial class GameHud : Control
 		else
 		{
 			_gameOverSound.Play();
+			ScoreManager.Instance.AddScore(_points);
 		}
 		_gameOverLabel.Visible = true;
 		_timer.Start();
@@ -80,9 +81,12 @@ public partial class GameHud : Control
 
 	private void HUDTimeout()
 	{
+		if(!_gameOverLabel.Text.Contains("GAME OVER"))
+		{
+			GetTree().Paused = false;
+		}
 		_gameOverLabel.Text = string.Empty;
 		_pressShotLabel.Visible = true;
-		GetTree().Paused = false;
 	}
 
 

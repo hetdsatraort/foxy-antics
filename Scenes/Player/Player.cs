@@ -26,7 +26,7 @@ public partial class Player : CharacterBody2D
 	[Export] protected Timer _hurtTimer;
 	[Export] private int _lives = 3;
 	[Export] private int _invincibilityTimer = 16;
-	[Export] protected float _fallenOffY = 300.0f;
+	[Export] protected float _fallenOffY = 400.0f;
 
 	[Export] private AnimationPlayer _invincibleAnimation;
 	private PackedScene _bulletScene = GD.Load<PackedScene>("res://Scenes/BulletBase/PlayerBullet.tscn");
@@ -190,7 +190,7 @@ public partial class Player : CharacterBody2D
 		_debugLabel.Text = $"Position: {GlobalPosition.X}, {GlobalPosition.Y}, Velocity: {Velocity.X}, {Velocity.Y}";
 
 		MoveAndSlide();
-
+		FallenOff();
 	}
 
 	private Vector2 GetInput(Vector2 velocity)
