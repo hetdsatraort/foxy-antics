@@ -80,6 +80,10 @@ public partial class Player : CharacterBody2D
 	private void HurtTimeoutCallback()
 	{
 		_hurt = false;
+		if(_lives == 0)
+		{
+			GetTree().Paused = true;
+		}
 	}
 
     private void OnHBAreaEntered(Area2D area)

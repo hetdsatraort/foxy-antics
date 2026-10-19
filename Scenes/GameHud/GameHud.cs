@@ -90,7 +90,6 @@ public partial class GameHud : Control
 		}
 		_gameOverLabel.Visible = true;
 		_timer.Start();
-		GetTree().Paused = true;
 	}
 
 	private void OnPlayerHit(int lives, bool shake)
