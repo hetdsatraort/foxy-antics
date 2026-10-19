@@ -15,9 +15,21 @@ public partial class GameHud : Control
 	[Export] private HBoxContainer _hbHearts;
 	private List<TextureRect> _hearts = new List<TextureRect>();
 	private int _points = 0;
+	private bool _complete = false;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		if (GetTree().Paused)
+		{
+			GetTree().Paused = false;
+		}
+
+		if (ScoreManager.Instance.CachedScore != 0)
+		{
+			_points = ScoreManager.Instance.CachedScore;
+			_pointsLabel.Text = _points.ToString("D4");
+		}
+		_levelLabel.Text = $"Level: {GameManager.Instance.CurrentLevel + 1}";
 		_hearts = _hbHearts.GetChildren().OfType<TextureRect>().ToList();
 		SignalHub.Instance.OnLevelComplete += OnLevelComplete;
 		SignalHub.Instance.OnPointsScored += OnPointsScored;
@@ -34,9 +46,21 @@ public partial class GameHud : Control
 
 	public override void _UnhandledInput(InputEvent @event)
 	{
-		if (_pressShotLabel.Visible && @event.IsActionPressed("shoot"))
+		if (_complete && @event.IsActionPressed("shoot"))
+		{
+			GameManager.LoadNextLLevel();
+		}
+		else if (_pressShotLabel.Visible && @event.IsActionPressed("shoot"))
 		{
 			GameManager.GoToMainMenu();
+		}
+		if (@event.IsActionPressed("reload"))
+		{
+			GameManager.ReloadCurrentLevel();
+		}
+		if (@event.IsActionPressed("next"))
+		{
+			GameManager.LoadNextLLevel();
 		}
 		if (@event.IsActionPressed("quit"))
 		{
@@ -48,11 +72,13 @@ public partial class GameHud : Control
 	{
 		_points += points;
 		_pointsLabel.Text = _points.ToString("D4");
+		ScoreManager.Instance.CachedScore += points;
 	}
 
 	private void OnLevelComplete(bool complete)
 	{
-		if(complete)
+		_complete = complete;
+		if (complete)
 		{
 			_gameOverLabel.Text = "Level Complete";
 			_youreWinnerSound.Play();
@@ -81,7 +107,7 @@ public partial class GameHud : Control
 
 	private void HUDTimeout()
 	{
-		if(!_gameOverLabel.Text.Contains("GAME OVER"))
+		if (!_gameOverLabel.Text.Contains("GAME OVER"))
 		{
 			GetTree().Paused = false;
 		}

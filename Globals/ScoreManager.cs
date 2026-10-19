@@ -5,6 +5,7 @@ public partial class ScoreManager : Node
 {
 	public static ScoreManager Instance { get; private set; }
     private const string SCORE_FILE_PATH = "user://foxy.res";
+	public int CachedScore { get; set; }
 
 
 	// Called when the node enters the scene tree for the first time.

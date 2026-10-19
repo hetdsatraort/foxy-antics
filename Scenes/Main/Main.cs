@@ -21,7 +21,7 @@ public partial class Main : Control
 	{
 		if(Input.IsActionJustPressed("shoot"))
 		{
-			GameManager.StartGame();
+			GameManager.LoadNextLLevel();
 		}
 		if(Input.IsActionJustPressed("quit") || Input.IsActionJustPressed("ui_cancel"))
 		{
