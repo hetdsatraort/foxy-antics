@@ -14,7 +14,8 @@ public partial class GameManager : Node
     {
         GD.Load<PackedScene>("res://Scenes/LevelBase/Level1.tscn"),
         GD.Load<PackedScene>("res://Scenes/LevelBase/Level2.tscn"),
-        GD.Load<PackedScene>("res://Scenes/LevelBase/Level3.tscn")
+        GD.Load<PackedScene>("res://Scenes/LevelBase/Level3.tscn"),
+        GD.Load<PackedScene>("res://Scenes/LevelBaseOld/LevelBaseOld.tscn")
     };
 
     public int CurrentLevel { get { return _currentLevel; } }

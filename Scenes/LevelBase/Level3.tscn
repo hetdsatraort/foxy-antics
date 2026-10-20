@@ -7,8 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cstk25s3h4be8" path="res://Scenes/Enemies/Eagle/Eagle.tscn" id="4_bq7sv"]
 [ext_resource type="PackedScene" uid="uid://bnvo5vlcml1ln" path="res://Scenes/FloorSpike/FloorSpike.tscn" id="5_snfl8"]
 [ext_resource type="PackedScene" uid="uid://dtk1e7oysltxi" path="res://Scenes/AnimatableMovingPlatform/AnimatableMovingPlatform.tscn" id="6_7d2lj"]
-[ext_resource type="PackedScene" uid="uid://dg5g8xr75q8w1" path="res://Scenes/ScrollingBg/ScrollingBg.tscn" id="6_xpoj4"]
-[ext_resource type="Resource" uid="uid://dhw0tnn0h7x87" path="res://Resources/ScrollingBg4.tres" id="7_hntkt"]
+[ext_resource type="Resource" uid="uid://537emnqnu1p6" path="res://Resources/ScrollingBg2.tres" id="7_hntkt"]
 
 [node name="Level3" unique_id=1003504526 instance=ExtResource("1_qjb5r")]
 
@@ -230,5 +229,5 @@ position = Vector2(1121, -448)
 _from = NodePath("../../Markers/Marker2D10")
 _to = NodePath("../../Markers/Marker2D12")
 
-[node name="ScrollingBg" parent="." index="11" unique_id=391353749 instance=ExtResource("6_xpoj4")]
+[node name="ScrollingBg" parent="." index="11" unique_id=391353749]
 _scrollingImages = ExtResource("7_hntkt")

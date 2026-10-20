@@ -5,6 +5,18 @@
 [ext_resource type="AudioStream" uid="uid://dupy8gp2xyhl4" path="res://Assets/sound/Farm Frolics.ogg" id="3_i3fi7"]
 [ext_resource type="LabelSettings" uid="uid://cs563xqk74by0" path="res://Resources/TrippyColors96.tres" id="4_i3fi7"]
 [ext_resource type="PackedScene" uid="uid://doq1cje26lj2e" path="res://Scenes/HighScoreDisplay/HighScoreDisplay.tscn" id="5_o8wgc"]
+[ext_resource type="FontFile" uid="uid://xdvgympye0k5" path="res://Assets/fonts/LuckiestGuy-Regular.ttf" id="6_aw1lf"]
+[ext_resource type="Script" uid="uid://cj75i70vvv05e" path="res://Scenes/Main/InputMapDisplay.cs" id="7_5s61s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7npjy"]
+line_spacing = 10.0
+font = ExtResource("6_aw1lf")
+font_size = 30
+font_color = Color(1, 0, 0, 0.98039216)
+outline_size = 5
+outline_color = Color(0.84313726, 0.5254902, 1, 1)
+shadow_size = 10
+shadow_color = Color(2.3102762e-06, 0.7470342, 0.33970055, 0.99607843)
 
 [node name="Main" type="Control" unique_id=514625084 node_paths=PackedStringArray("_gridContainer")]
 layout_mode = 3
@@ -40,16 +52,36 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -11.5
-offset_right = 44.0
-offset_bottom = 11.5
+offset_left = -282.0
+offset_top = -293.5
+offset_right = 282.0
+offset_bottom = -192.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Foxy Antics"
 label_settings = ExtResource("4_i3fi7")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="InputMapDisplay" type="Label" parent="." unique_id=409302778]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -277.0
+offset_top = -72.0
+offset_right = 287.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "
+"
+label_settings = SubResource("LabelSettings_7npjy")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("7_5s61s")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1661741347]
 layout_mode = 1

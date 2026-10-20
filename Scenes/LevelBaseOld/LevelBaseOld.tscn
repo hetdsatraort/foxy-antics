@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://drw14cxxgm7fm" path="res://Scenes/LevelBase/LevelBase.cs" id="1_wahvg"]
 [ext_resource type="TileSet" uid="uid://bny624eckwekk" path="res://Resources/LevelTiles.tres" id="2_0tn4p"]
+[ext_resource type="PackedScene" uid="uid://dg5g8xr75q8w1" path="res://Scenes/ScrollingBg/ScrollingBg.tscn" id="2_hdb8m"]
 [ext_resource type="PackedScene" uid="uid://c4hfer4hxk4j" path="res://Scenes/Player/Player.tscn" id="3_hdb8m"]
+[ext_resource type="Resource" uid="uid://dhw0tnn0h7x87" path="res://Resources/ScrollingBg4.tres" id="3_mt0jg"]
 [ext_resource type="PackedScene" uid="uid://cx45uj01hja50" path="res://Scenes/Enemies/Frog/Frog.tscn" id="4_mt0jg"]
 [ext_resource type="PackedScene" uid="uid://cstk25s3h4be8" path="res://Scenes/Enemies/Eagle/Eagle.tscn" id="5_ywlgh"]
 [ext_resource type="PackedScene" uid="uid://devta8henbrea" path="res://Scenes/BulletBase/PlayerBullet.tscn" id="6_q3aih"]
@@ -42,6 +44,10 @@ point_count = 7
 
 [node name="LevelBaseOld" type="Node" unique_id=336341704]
 script = ExtResource("1_wahvg")
+
+[node name="ScrollingBg" parent="." unique_id=391353749 instance=ExtResource("2_hdb8m")]
+position = Vector2(55, -38)
+_scrollingImages = ExtResource("3_mt0jg")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1126740477]
 position = Vector2(55, -38)
