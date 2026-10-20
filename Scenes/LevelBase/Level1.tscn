@@ -2,20 +2,39 @@
 
 [ext_resource type="PackedScene" uid="uid://cchhw3r0lrtpk" path="res://Scenes/LevelBase/LevelBase.tscn" id="1_i6yup"]
 [ext_resource type="PackedScene" uid="uid://b6roef2kq5qc4" path="res://Scenes/Enemies/Snail/Snail.tscn" id="2_fb302"]
+[ext_resource type="PackedScene" uid="uid://dg5g8xr75q8w1" path="res://Scenes/ScrollingBg/ScrollingBg.tscn" id="2_nvsc8"]
+[ext_resource type="Texture2D" uid="uid://c2coe0y7we36b" path="res://Assets/backgrounds/game_background_3/layers/sky.png" id="3_gmk2d"]
+[ext_resource type="Texture2D" uid="uid://cp8nk4y2ivvhy" path="res://Assets/backgrounds/game_background_3/layers/clouds_1.png" id="4_laqje"]
+[ext_resource type="Texture2D" uid="uid://doqe3ukkfgnje" path="res://Assets/backgrounds/game_background_3/layers/clouds_2.png" id="5_cda7r"]
+[ext_resource type="Texture2D" uid="uid://2l5gqawbnvla" path="res://Assets/backgrounds/game_background_3/layers/ground_3.png" id="6_cmgv2"]
+[ext_resource type="Texture2D" uid="uid://c6cgnsf4avst7" path="res://Assets/backgrounds/game_background_3/layers/ground_2.png" id="7_15lbf"]
+[ext_resource type="Texture2D" uid="uid://dy3ipmyysfvtd" path="res://Assets/backgrounds/game_background_3/layers/ground_1.png" id="7_laqje"]
+[ext_resource type="Texture2D" uid="uid://3ukjqfvgfadj" path="res://Assets/backgrounds/game_background_3/layers/rocks.png" id="8_61e37"]
+[ext_resource type="Texture2D" uid="uid://bljc8ghrmcs4e" path="res://Assets/backgrounds/game_background_3/layers/plant.png" id="9_satic"]
+[ext_resource type="Script" uid="uid://b8hcpxoath2eh" path="res://Classes/ScrollingBgImages.cs" id="10_o2owb"]
+
+[sub_resource type="Resource" id="Resource_gqoyu"]
+script = ExtResource("10_o2owb")
+Images = Array[Texture2D]([ExtResource("3_gmk2d"), ExtResource("4_laqje"), ExtResource("5_cda7r"), ExtResource("8_61e37"), ExtResource("7_laqje"), ExtResource("7_15lbf"), ExtResource("6_cmgv2"), ExtResource("9_satic")])
+metadata/_custom_type_script = "uid://b8hcpxoath2eh"
 
 [node name="Level1" unique_id=336341704 instance=ExtResource("1_i6yup")]
 
-[node name="TileMapLayer" parent="." index="0" unique_id=1126740477]
+[node name="ScrollingBg" parent="." index="0" unique_id=391353749 instance=ExtResource("2_nvsc8")]
+z_index = -10
+_scrollingImages = SubResource("Resource_gqoyu")
+
+[node name="TileMapLayer" parent="." index="1" unique_id=1126740477]
 tile_map_data = PackedByteArray("AAD9/wAAAAAGAAAAAAD9/wEAAAAGAAEAAAD+/wAAAAAHAAAAAAD+/wEAAAAHAAEAAAD//wAAAAAGAAAAAAD//wEAAAAGAAEAAAAAAAAAAAAHAAAAAAAAAAEAAAAHAAEAAAABAAAAAAAGAAAAAAABAAEAAAAGAAEAAAACAAAAAAAHAAAAAAACAAEAAAAHAAEAAAADAAAAAAAGAAAAAAADAAEAAAAGAAEAAAAEAAAAAAAHAAAAAAAEAAEAAAAHAAEAAAAFAAAAAAAGAAAAAAAFAAEAAAAGAAEAAAAGAAAAAAAHAAAAAAAGAAEAAAAHAAEAAAAHAAAAAAAGAAAAAAAHAAEAAAAGAAEAAAAIAAAAAAAHAAAAAAAIAAEAAAAHAAEAAAAJAAAAAAAGAAAAAAAJAAEAAAAGAAEAAAAOAAAAAAAHAAAAAAAOAAEAAAAHAAEAAAAPAAAAAAAGAAAAAAAPAAEAAAAGAAEAAAAQAAAAAAAGAAAAAAAQAAEAAAAGAAEAAAARAAAAAAAHAAAAAAARAAEAAAAHAAEAAAASAAAAAAAGAAAAAAASAAEAAAAGAAEAAAATAAAAAAAHAAAAAAATAAEAAAAHAAEAAAAUAAAAAAAGAAAAAAAUAAEAAAAGAAEAAAAVAAAAAAAHAAAAAAAVAAEAAAAHAAEAAAAWAAAAAAAGAAAAAAAWAAEAAAAGAAEAAAAXAAAAAAAHAAAAAAAXAAEAAAAHAAEAAAAYAAAAAAAGAAAAAAAYAAEAAAAGAAEAAAAZAAAAAAAHAAAAAAAZAAEAAAAHAAEAAAAaAAAAAAAGAAAAAAAaAAEAAAAGAAEAAAAbAAAAAAAHAAAAAAAbAAEAAAAHAAEAAAAcAAAAAAAGAAAAAAAcAAEAAAAGAAEAAAAdAAAAAAAHAAAAAAAdAAEAAAAHAAEAAAAeAAAAAAAGAAAAAAAeAAEAAAAGAAEAAAAfAAAAAAAHAAAAAAAfAAEAAAAHAAEAAAAlAAAAAAAHAAAAAAAlAAEAAAAHAAEAAAAmAAAAAAAGAAAAAAAmAAEAAAAGAAEAAAAnAAAAAAAHAAAAAAAnAAEAAAAHAAEAAAAoAAAAAAAGAAAAAAAoAAEAAAAGAAEAAAApAAAAAAAHAAAAAAApAAEAAAAHAAEAAAAqAAAAAAAGAAAAAAAqAAEAAAAGAAEAAAArAAAAAAAHAAAAAAArAAEAAAAHAAEAAAAsAAAAAAAGAAAAAAAsAAEAAAAGAAEAAAAtAAAAAAAHAAAAAAAtAAEAAAAHAAEAAAAuAAAAAAAGAAAAAAAuAAEAAAAGAAEAAAAvAAAAAAAHAAAAAAAvAAEAAAAHAAEAAAAwAAAAAAAGAAAAAAAwAAEAAAAGAAEAAAAxAAAAAAAHAAAAAAAxAAEAAAAHAAEAAAA4AAAAAAAGAAAAAAA4AAEAAAAGAAEAAAA5AAAAAAAGAAAAAAA5AAEAAAAGAAEAAAA6AAAAAAAHAAAAAAA6AAEAAAAHAAEAAAA7AAAAAAAGAAAAAAA7AAEAAAAGAAEAAAA8AAAAAAAHAAAAAAA8AAEAAAAHAAEAAAA9AAAAAAAGAAAAAAA9AAEAAAAGAAEAAAA+AAAAAAAHAAAAAAA+AAEAAAAHAAEAAAA/AAAAAAAGAAAAAAA/AAEAAAAGAAEAAABAAAAAAAAHAAAAAABAAAEAAAAHAAEAAABBAAAAAAAGAAAAAABBAAEAAAAGAAEAAABCAAAAAAAHAAAAAABCAAEAAAAHAAEAAABDAAAAAAAGAAAAAABDAAEAAAAGAAEAAABLAAAAAAAGAAAAAABLAAEAAAAGAAEAAABMAAAAAAAHAAAAAABMAAEAAAAHAAEAAABNAAAAAAAGAAAAAABNAAEAAAAGAAEAAABOAAAAAAAHAAAAAABOAAEAAAAHAAEAAABPAAAAAAAGAAAAAABPAAEAAAAGAAEAAABQAAAAAAAHAAAAAABQAAEAAAAHAAEAAABRAAAAAAAGAAAAAABRAAEAAAAGAAEAAAA=")
 
 [node name="Snail" parent="Enemies" parent_id_path=PackedInt32Array(105181249) index="0" unique_id=1263706926 instance=ExtResource("2_fb302")]
 position = Vector2(393, -47)
 
 [node name="Snail2" parent="Enemies" parent_id_path=PackedInt32Array(105181249) index="1" unique_id=1949523178 instance=ExtResource("2_fb302")]
-position = Vector2(201, -48)
+position = Vector2(201, -63)
 
-[node name="Boss" parent="." index="3" unique_id=2047855565]
-position = Vector2(765, -32)
+[node name="Boss" parent="." index="4" unique_id=2047855565]
+position = Vector2(766, -32)
 
-[node name="FinishCheckPoint" parent="." index="5" unique_id=1293857550]
-position = Vector2(1119, -48)
+[node name="FinishCheckPoint" parent="." index="6" unique_id=1293857550]
+position = Vector2(1119, -37)

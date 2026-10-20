@@ -145,6 +145,7 @@ public partial class Player : CharacterBody2D
 		if(GlobalPosition.Y > _fallenOffY)
 		{
 			ReduceLives(_lives);
+			ApplyHurt();
 		}
 	}
 

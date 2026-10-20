@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dg5g8xr75q8w1"]
+
+[ext_resource type="Script" uid="uid://dfwqoxq031aiq" path="res://Scenes/ScrollingBg/ScrollingBg.cs" id="1_8iw61"]
+
+[node name="ScrollingBg" type="Node2D" unique_id=391353749]
+script = ExtResource("1_8iw61")
