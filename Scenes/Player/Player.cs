@@ -17,6 +17,7 @@ public partial class Player : CharacterBody2D
 	public bool IsFalling { get { return Velocity.Y > 0; } }
 	public bool OnFloor { get { return IsOnFloor(); } }
 	public bool IsHurt { get { return _hurt; } }
+	public PlayerCam PlayerCam { get { return _playerCam; } }
 	[Export] private Label _debugLabel;
 	[Export] private AudioStreamPlayer2D _jumpSound;
 	[Export] private AudioStreamPlayer2D _hurtSound;
