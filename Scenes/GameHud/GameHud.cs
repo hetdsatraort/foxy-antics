@@ -82,7 +82,7 @@ public partial class GameHud : Control
 		{
 			_gameOverLabel.Text = "Level Complete";
 			_youreWinnerSound.Play();
-			if (GameManager.Instance.CurrentLevel == 2)
+			if (GameManager.Instance.CurrentLevel + 1 >= GameManager.Instance._levelScenes.Count)
 			{
 				ScoreManager.Instance.AddScore(_points);
 			}
