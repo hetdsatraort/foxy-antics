@@ -18,6 +18,24 @@ outline_color = Color(0, 1, 1, 1)
 shadow_size = 20
 shadow_color = Color(1, 0, 1, 0.99607843)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_minimap"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.05, 0.02, 0.12, 0.85)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 1, 1, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(1, 0, 1, 0.6)
+shadow_size = 8
+
 [node name="GameHUD" type="Control" unique_id=669316696 node_paths=PackedStringArray("_youreWinnerSound", "_gameOverSound", "_gameOverLabel", "_pressShotLabel", "_levelLabel", "_pointsLabel", "_timer", "_hbHearts")]
 process_mode = 3
 layout_mode = 3
@@ -118,17 +136,22 @@ grow_vertical = 0
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="MarginContainer2" unique_id=848541440]
+[node name="MinimapFrame" type="PanelContainer" parent="MarginContainer2" unique_id=1592734018]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_minimap")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MarginContainer2/MinimapFrame" unique_id=848541440]
 layout_mode = 2
 
-[node name="MinimapViewport" type="SubViewport" parent="MarginContainer2/SubViewportContainer" unique_id=737794512]
+[node name="MinimapViewport" type="SubViewport" parent="MarginContainer2/MinimapFrame/SubViewportContainer" unique_id=737794512]
 handle_input_locally = false
 size = Vector2i(192, 108)
 render_target_update_mode = 4
 script = ExtResource("4_qf7vk")
 
-[node name="MiniMapCamera" type="Camera2D" parent="MarginContainer2/SubViewportContainer/MinimapViewport" unique_id=1718555942]
+[node name="MiniMapCamera" type="Camera2D" parent="MarginContainer2/MinimapFrame/SubViewportContainer/MinimapViewport" unique_id=1718555942]
 zoom = Vector2(0.2, 0.2)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1418963824]
