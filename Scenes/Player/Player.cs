@@ -26,6 +26,11 @@ public partial class Player : CharacterBody2D
 	[Export] protected Timer _hurtTimer;
 	[Export] private int _lives = 3;
 	[Export] private int _invincibilityTimer = 16;
+	[Export] private int _cameraLeft = -10000;
+	[Export] private int _cameraRight = 10000;
+	[Export] private int _cameraTop = -10000;
+	[Export] private int _cameraBottom = 10000;
+	[Export] private PlayerCam _playerCam;
 	[Export] protected float _fallenOffY = 400.0f;
 
 	[Export] private AnimationPlayer _invincibleAnimation;
@@ -41,8 +46,17 @@ public partial class Player : CharacterBody2D
 		_hitBox.AreaExited += OnHBAreaExited;
 		_hurtTimer.Timeout += HurtTimeoutCallback;
 		_invincibleAnimation.AnimationFinished += OnAnimationInvFinished;
-
+		SetLimits();
+		
 		CallDeferred(nameof(HUDInit));
+	}
+
+	private void SetLimits()
+	{
+		_playerCam.LimitLeft = _cameraLeft;
+		_playerCam.LimitRight = _cameraRight;
+		_playerCam.LimitTop = _cameraTop;
+		_playerCam.LimitBottom = _cameraBottom;
 	}
 
 	private void HUDInit()

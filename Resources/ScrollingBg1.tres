@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ScrollingBgImages" format=3 uid="uid://bd5lmv3t67h5l"]
+
+[ext_resource type="Texture2D" uid="uid://c2coe0y7we36b" path="res://Assets/backgrounds/game_background_3/layers/sky.png" id="1_hufgn"]
+[ext_resource type="Texture2D" uid="uid://cp8nk4y2ivvhy" path="res://Assets/backgrounds/game_background_3/layers/clouds_1.png" id="2_ip6gr"]
+[ext_resource type="Texture2D" uid="uid://doqe3ukkfgnje" path="res://Assets/backgrounds/game_background_3/layers/clouds_2.png" id="3_ir1uf"]
+[ext_resource type="Texture2D" uid="uid://3ukjqfvgfadj" path="res://Assets/backgrounds/game_background_3/layers/rocks.png" id="4_ugymn"]
+[ext_resource type="Texture2D" uid="uid://dy3ipmyysfvtd" path="res://Assets/backgrounds/game_background_3/layers/ground_1.png" id="5_e23yq"]
+[ext_resource type="Texture2D" uid="uid://c6cgnsf4avst7" path="res://Assets/backgrounds/game_background_3/layers/ground_2.png" id="6_ur38y"]
+[ext_resource type="Texture2D" uid="uid://2l5gqawbnvla" path="res://Assets/backgrounds/game_background_3/layers/ground_3.png" id="7_bygwa"]
+[ext_resource type="Texture2D" uid="uid://bljc8ghrmcs4e" path="res://Assets/backgrounds/game_background_3/layers/plant.png" id="8_w4jy2"]
+[ext_resource type="Script" uid="uid://b8hcpxoath2eh" path="res://Classes/ScrollingBgImages.cs" id="9_71gdi"]
+
+[resource]
+script = ExtResource("9_71gdi")
+Images = Array[Texture2D]([ExtResource("1_hufgn"), ExtResource("2_ip6gr"), ExtResource("3_ir1uf"), ExtResource("4_ugymn"), ExtResource("5_e23yq"), ExtResource("6_ur38y"), ExtResource("7_bygwa"), ExtResource("8_w4jy2")])
+metadata/_custom_type_script = "uid://b8hcpxoath2eh"

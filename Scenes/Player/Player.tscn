@@ -255,7 +255,7 @@ _data = {
 &"invincible": SubResource("Animation_0kmp4")
 }
 
-[node name="Player" type="CharacterBody2D" unique_id=326797843 node_paths=PackedStringArray("_debugLabel", "_jumpSound", "_hurtSound", "_playerSprite", "_shooter", "_hitBox", "_hurtTimer", "_invincibleAnimation")]
+[node name="Player" type="CharacterBody2D" unique_id=326797843 node_paths=PackedStringArray("_debugLabel", "_jumpSound", "_hurtSound", "_playerSprite", "_shooter", "_hitBox", "_hurtTimer", "_playerCam", "_invincibleAnimation")]
 collision_layer = 0
 script = ExtResource("1_h54ih")
 _debugLabel = NodePath("DebugLabel")
@@ -265,6 +265,12 @@ _playerSprite = NodePath("Sprite2D")
 _shooter = NodePath("Shooter")
 _hitBox = NodePath("HitBox")
 _hurtTimer = NodePath("HurtTimer")
+_cameraLeft = -200
+_cameraRight = 4720
+_cameraTop = -1050
+_cameraBottom = 5
+_playerCam = NodePath("PlayerCam")
+_fallenOffY = 300.0
 _invincibleAnimation = NodePath("InvincibleAnimation")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1253005433]

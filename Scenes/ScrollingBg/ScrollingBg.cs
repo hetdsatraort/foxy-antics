@@ -31,6 +31,7 @@ public partial class ScrollingBg : Node2D
 	private void AddLayer(float currentScrollScale, Texture2D image)
 	{
 		Parallax2D parallax2D = new Parallax2D();
+		parallax2D.ZIndex = -10;
 		parallax2D.RepeatSize = new Vector2(baseSize.X, 0.0f);
 		parallax2D.ScrollScale = new Vector2(currentScrollScale, 1.0f);
 
