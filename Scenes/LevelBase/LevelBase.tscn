@@ -32,7 +32,8 @@ position = Vector2(355, -59)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1753334179]
 
-[node name="GameHUD" parent="CanvasLayer" unique_id=669316696 instance=ExtResource("11_k6lws")]
+[node name="GameHUD" parent="CanvasLayer" unique_id=669316696 node_paths=PackedStringArray("Player") instance=ExtResource("11_k6lws")]
+Player = NodePath("../../Player")
 
 [node name="BallSpikes" type="Node" parent="." unique_id=847285748]
 

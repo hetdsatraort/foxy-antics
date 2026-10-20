@@ -13,6 +13,7 @@ public partial class GameHud : Control
 	[Export] private Label _pointsLabel;
 	[Export] private Timer _timer;
 	[Export] private HBoxContainer _hbHearts;
+	[Export] public Node2D Player;
 	private List<TextureRect> _hearts = new List<TextureRect>();
 	private int _points = 0;
 	private bool _complete = false;
