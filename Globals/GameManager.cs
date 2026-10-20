@@ -13,7 +13,8 @@ public partial class GameManager : Node
     private List<PackedScene> _levelScenes = new List<PackedScene>
     {
         GD.Load<PackedScene>("res://Scenes/LevelBase/Level1.tscn"),
-        GD.Load<PackedScene>("res://Scenes/LevelBase/Level2.tscn")
+        GD.Load<PackedScene>("res://Scenes/LevelBase/Level2.tscn"),
+        GD.Load<PackedScene>("res://Scenes/LevelBase/Level3.tscn")
     };
 
     public int CurrentLevel { get { return _currentLevel; } }
@@ -43,7 +44,7 @@ public partial class GameManager : Node
         _currentLevel++;
         if (_currentLevel >= _levelScenes.Count)
         {
-            _currentLevel = 0;
+            LoadMainMenu();
         }
         NextScene = _levelScenes[_currentLevel];
         GetTree().ChangeSceneToPacked(NextScene);

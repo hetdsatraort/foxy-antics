@@ -82,6 +82,10 @@ public partial class GameHud : Control
 		{
 			_gameOverLabel.Text = "Level Complete";
 			_youreWinnerSound.Play();
+			if (GameManager.Instance.CurrentLevel == 2)
+			{
+				ScoreManager.Instance.AddScore(_points);
+			}
 		}
 		else
 		{

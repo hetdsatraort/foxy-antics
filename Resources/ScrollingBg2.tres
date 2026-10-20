@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ScrollingBgImages" format=3 uid="uid://537emnqnu1p6"]
+
+[ext_resource type="Texture2D" uid="uid://l5bevmcuh34e" path="res://Assets/backgrounds/game_background_4/layers/sky.png" id="1_1olil"]
+[ext_resource type="Texture2D" uid="uid://b27wkjmyh1l0m" path="res://Assets/backgrounds/game_background_4/layers/clouds_1.png" id="2_3tef8"]
+[ext_resource type="Texture2D" uid="uid://cmfcoiuxh4nba" path="res://Assets/backgrounds/game_background_4/layers/clouds_2.png" id="3_hwnxl"]
+[ext_resource type="Texture2D" uid="uid://bwhu3byyh6gtg" path="res://Assets/backgrounds/game_background_4/layers/ground.png" id="4_xuxti"]
+[ext_resource type="Texture2D" uid="uid://isxxpvgxoblc" path="res://Assets/backgrounds/game_background_4/layers/rocks.png" id="5_lph3l"]
+[ext_resource type="Script" uid="uid://b8hcpxoath2eh" path="res://Classes/ScrollingBgImages.cs" id="6_foug3"]
+
+[resource]
+script = ExtResource("6_foug3")
+Images = Array[Texture2D]([ExtResource("1_1olil"), ExtResource("2_3tef8"), ExtResource("3_hwnxl"), ExtResource("5_lph3l"), ExtResource("4_xuxti")])
+metadata/_custom_type_script = "uid://b8hcpxoath2eh"

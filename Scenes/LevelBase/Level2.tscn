@@ -3,13 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://cchhw3r0lrtpk" path="res://Scenes/LevelBase/LevelBase.tscn" id="1_qm008"]
 [ext_resource type="PackedScene" uid="uid://b6roef2kq5qc4" path="res://Scenes/Enemies/Snail/Snail.tscn" id="2_q1xli"]
 [ext_resource type="PackedScene" uid="uid://dg5g8xr75q8w1" path="res://Scenes/ScrollingBg/ScrollingBg.tscn" id="2_vqpoc"]
-[ext_resource type="Resource" uid="uid://bd5lmv3t67h5l" path="res://Resources/ScrollingBg1.tres" id="3_83cd2"]
 [ext_resource type="PackedScene" uid="uid://cx45uj01hja50" path="res://Scenes/Enemies/Frog/Frog.tscn" id="3_bdp8f"]
+[ext_resource type="Resource" uid="uid://537emnqnu1p6" path="res://Resources/ScrollingBg2.tres" id="3_vqpoc"]
 
 [node name="Level2" unique_id=336341704 instance=ExtResource("1_qm008")]
 
 [node name="ScrollingBg" parent="." index="0" unique_id=391353749 instance=ExtResource("2_vqpoc")]
-_scrollingImages = ExtResource("3_83cd2")
+_scrollingImages = ExtResource("3_vqpoc")
 
 [node name="TileMapLayer" parent="." index="1" unique_id=1126740477]
 position = Vector2(848, -341)

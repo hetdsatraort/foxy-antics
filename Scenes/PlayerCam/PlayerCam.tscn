@@ -4,3 +4,5 @@
 
 [node name="PlayerCam" type="Camera2D" unique_id=858869596]
 script = ExtResource("1_x3erf")
+_shakeAmount = 10.0
+_shakeTime = 0.5
